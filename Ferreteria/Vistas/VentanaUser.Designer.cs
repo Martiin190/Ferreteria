@@ -55,7 +55,7 @@
             this.grupoUsuario.Controls.Add(this.label3);
             this.grupoUsuario.Controls.Add(this.label2);
             this.grupoUsuario.Controls.Add(this.label1);
-            this.grupoUsuario.Location = new System.Drawing.Point(142, 126);
+            this.grupoUsuario.Location = new System.Drawing.Point(143, 124);
             this.grupoUsuario.Name = "grupoUsuario";
             this.grupoUsuario.Size = new System.Drawing.Size(685, 441);
             this.grupoUsuario.TabIndex = 0;

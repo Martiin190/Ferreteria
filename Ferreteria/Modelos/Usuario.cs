@@ -9,5 +9,8 @@ namespace Ferreteria.Modelos
     internal class Usuario
     {
 
+
+
+
     }
 }
