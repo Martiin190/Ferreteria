@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Ferreteria.Vistas
+namespace Ferreteria.Opciones_User
 {
-    public partial class VentanaAdmin : Form
+    public partial class VentanaDatosCuenta : Form
     {
-        public VentanaAdmin()
+        public VentanaDatosCuenta()
         {
             InitializeComponent();
         }

@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Ferreteria.Modelos
+namespace Ferreteria.Utilidades
 {
-    internal class Usuario
+    internal class Utillidades
     {
-        //Esto es una prueba 
     }
 }

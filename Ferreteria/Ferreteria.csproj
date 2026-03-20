@@ -48,6 +48,91 @@
   <ItemGroup>
     <Compile Include="bbdd\Conexion.cs" />
     <Compile Include="Modelos\Usuario.cs" />
+    <Compile Include="Opciones Admin\VentanaRegistrarArticulo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Opciones Admin\VentanaRegistrarArticulo.Designer.cs">
+      <DependentUpon>VentanaRegistrarArticulo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Opciones Admin\VentanaRegistrarUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Opciones Admin\VentanaRegistrarUsuario.Designer.cs">
+      <DependentUpon>VentanaRegistrarUsuario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Opciones Admin\VentanaVerDatosCuenta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Opciones Admin\VentanaVerDatosCuenta.Designer.cs">
+      <DependentUpon>VentanaVerDatosCuenta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Opciones Admin\VentanaVerListadoArticulos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Opciones Admin\VentanaVerListadoArticulos.Designer.cs">
+      <DependentUpon>VentanaVerListadoArticulos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Opciones Admin\VentanaVerListadoArticulosDestacados.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Opciones Admin\VentanaVerListadoArticulosDestacados.Designer.cs">
+      <DependentUpon>VentanaVerListadoArticulosDestacados.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Opciones Admin\VentanaVerListadoArticulosOferta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Opciones Admin\VentanaVerListadoArticulosOferta.Designer.cs">
+      <DependentUpon>VentanaVerListadoArticulosOferta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Opciones Admin\VentanaVerListadoCategorias.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Opciones Admin\VentanaVerListadoCategorias.Designer.cs">
+      <DependentUpon>VentanaVerListadoCategorias.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Opciones Admin\VentanaVerListadoOrigenes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Opciones Admin\VentanaVerListadoOrigenes.Designer.cs">
+      <DependentUpon>VentanaVerListadoOrigenes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Opciones Admin\VentanaVerListadoTiendas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Opciones Admin\VentanaVerListadoTiendas.Designer.cs">
+      <DependentUpon>VentanaVerListadoTiendas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Opciones Admin\VentanaVerListadoUsuarios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Opciones Admin\VentanaVerListadoUsuarios.Designer.cs">
+      <DependentUpon>VentanaVerListadoUsuarios.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Opciones User\VentanaDatosCuenta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Opciones User\VentanaDatosCuenta.Designer.cs">
+      <DependentUpon>VentanaDatosCuenta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Opciones User\VentanaListadoArtículosDestacados.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Opciones User\VentanaListadoArtículosDestacados.Designer.cs">
+      <DependentUpon>VentanaListadoArtículosDestacados.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Opciones User\VentanaListadoArtículosEnOferta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Opciones User\VentanaListadoArtículosEnOferta.Designer.cs">
+      <DependentUpon>VentanaListadoArtículosEnOferta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Opciones User\VentanaListadoTotalArticulos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Opciones User\VentanaListadoTotalArticulos.Designer.cs">
+      <DependentUpon>VentanaListadoTotalArticulos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Utilidades\Utillidades.cs" />
     <Compile Include="Vistas\Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -56,24 +141,21 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Vistas\VentanaAdmin.cs">
+    <Compile Include="Vistas\VPAdmin.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Vistas\VentanaAdmin.Designer.cs">
-      <DependentUpon>VentanaAdmin.cs</DependentUpon>
+    <Compile Include="Vistas\VPAdmin.Designer.cs">
+      <DependentUpon>VPAdmin.cs</DependentUpon>
     </Compile>
-    <Compile Include="Vistas\VentanaUser.cs">
+    <Compile Include="Vistas\VPUser.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Vistas\VentanaUser.Designer.cs">
-      <DependentUpon>VentanaUser.cs</DependentUpon>
+    <Compile Include="Vistas\VPUser.Designer.cs">
+      <DependentUpon>VPUser.cs</DependentUpon>
     </Compile>
-    <Compile Include="Vistas\VP.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Vistas\VP.Designer.cs">
-      <DependentUpon>VP.cs</DependentUpon>
-    </Compile>
+    <EmbeddedResource Include="Opciones User\VentanaListadoTotalArticulos.resx">
+      <DependentUpon>VentanaListadoTotalArticulos.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Vistas\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
@@ -86,9 +168,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Vistas\VentanaUser.resx">
-      <DependentUpon>VentanaUser.cs</DependentUpon>
-    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
