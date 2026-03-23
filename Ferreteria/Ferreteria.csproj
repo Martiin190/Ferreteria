@@ -153,6 +153,36 @@
     <Compile Include="Vistas\VPUser.Designer.cs">
       <DependentUpon>VPUser.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Opciones Admin\VentanaRegistrarArticulo.resx">
+      <DependentUpon>VentanaRegistrarArticulo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Opciones Admin\VentanaRegistrarUsuario.resx">
+      <DependentUpon>VentanaRegistrarUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Opciones Admin\VentanaVerDatosCuenta.resx">
+      <DependentUpon>VentanaVerDatosCuenta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Opciones Admin\VentanaVerListadoArticulos.resx">
+      <DependentUpon>VentanaVerListadoArticulos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Opciones Admin\VentanaVerListadoArticulosDestacados.resx">
+      <DependentUpon>VentanaVerListadoArticulosDestacados.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Opciones Admin\VentanaVerListadoArticulosOferta.resx">
+      <DependentUpon>VentanaVerListadoArticulosOferta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Opciones Admin\VentanaVerListadoCategorias.resx">
+      <DependentUpon>VentanaVerListadoCategorias.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Opciones Admin\VentanaVerListadoOrigenes.resx">
+      <DependentUpon>VentanaVerListadoOrigenes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Opciones Admin\VentanaVerListadoTiendas.resx">
+      <DependentUpon>VentanaVerListadoTiendas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Opciones Admin\VentanaVerListadoUsuarios.resx">
+      <DependentUpon>VentanaVerListadoUsuarios.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Opciones User\VentanaListadoTotalArticulos.resx">
       <DependentUpon>VentanaListadoTotalArticulos.cs</DependentUpon>
     </EmbeddedResource>
