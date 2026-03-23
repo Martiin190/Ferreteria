@@ -183,6 +183,15 @@
     <EmbeddedResource Include="Opciones Admin\VentanaVerListadoUsuarios.resx">
       <DependentUpon>VentanaVerListadoUsuarios.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Opciones User\VentanaDatosCuenta.resx">
+      <DependentUpon>VentanaDatosCuenta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Opciones User\VentanaListadoArtículosDestacados.resx">
+      <DependentUpon>VentanaListadoArtículosDestacados.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Opciones User\VentanaListadoArtículosEnOferta.resx">
+      <DependentUpon>VentanaListadoArtículosEnOferta.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Opciones User\VentanaListadoTotalArticulos.resx">
       <DependentUpon>VentanaListadoTotalArticulos.cs</DependentUpon>
     </EmbeddedResource>
