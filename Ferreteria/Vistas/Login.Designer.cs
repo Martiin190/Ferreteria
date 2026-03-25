@@ -1,4 +1,7 @@
-﻿namespace Ferreteria
+﻿using System.Windows.Forms;
+using Ferreteria.bbdd;
+
+namespace Ferreteria
 {
     partial class Login
     {
@@ -29,8 +32,8 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Login));
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.CampoUsuario = new System.Windows.Forms.TextBox();
+            this.CampoPass = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
@@ -38,19 +41,19 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
-            // textBox1
+            // CampoUsuario
             // 
-            this.textBox1.Location = new System.Drawing.Point(639, 221);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(159, 22);
-            this.textBox1.TabIndex = 0;
+            this.CampoUsuario.Location = new System.Drawing.Point(639, 221);
+            this.CampoUsuario.Name = "CampoUsuario";
+            this.CampoUsuario.Size = new System.Drawing.Size(159, 22);
+            this.CampoUsuario.TabIndex = 0;
             // 
-            // textBox2
+            // CampoPass
             // 
-            this.textBox2.Location = new System.Drawing.Point(639, 272);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(159, 22);
-            this.textBox2.TabIndex = 1;
+            this.CampoPass.Location = new System.Drawing.Point(639, 272);
+            this.CampoPass.Name = "CampoPass";
+            this.CampoPass.Size = new System.Drawing.Size(159, 22);
+            this.CampoPass.TabIndex = 1;
             // 
             // label1
             // 
@@ -78,6 +81,7 @@
             this.button1.TabIndex = 4;
             this.button1.Text = "button1";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // pictureBox1
             // 
@@ -98,8 +102,8 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.CampoPass);
+            this.Controls.Add(this.CampoUsuario);
             this.Name = "Login";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Login_Load);
@@ -111,12 +115,15 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox CampoUsuario;
+        private System.Windows.Forms.TextBox CampoPass;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.PictureBox pictureBox1;
+
     }
 }
+
+
 

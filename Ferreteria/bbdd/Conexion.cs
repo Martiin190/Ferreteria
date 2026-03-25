@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -9,80 +10,108 @@ using MySqlConnector;
 
 namespace Ferreteria.bbdd
 {
-    internal class Conexion
+    public class Conexion
+    {
+        public static MySqlConnection conn;
 
+        private static readonly string url =
+            "Server=127.0.0.1; " +
+            "Database=ferreteria; " +
+            "User=root; " +
+            "port=3307; " +
+            "password=";
+
+        public static void conectar()
         {
-            public static MySqlConnection conn;
-
-            private static readonly string url =
-                "Server=145.14.151.51; " +
-                "Database=u812167471_mascotas; " +
-                "User=u812167471_mascotas; " +
-                "port=3306; " +
-                "password=2026-Mascotas";
-
-            public static void conectar()
+            try
             {
-                try
-                {
-                    conn = new MySqlConnection(url);
-                    conn.Open();
-                }
-                catch (MySqlException e)
-                {
-                    MessageBox.Show("Error al conectar con la base de datos.\n" + e.Message);
-                }
-
+                conn = new MySqlConnection(url);
+                conn.Open();
             }
-
-            public static void cerrar()
+            catch (MySqlException e)
             {
-                if (conn != null)
-                {
-                    try
-                    {
-                        conn.Close();
-                    }
-                    catch (MySqlException e)
-                    {
-                        MessageBox.Show("Error al cerrar la conexión con la base de datos.\n" + e.Message);
-                    }
-                }
-
-            }
-
-            public static bool acceder(string user, string pass)
-            {
-                string consulta = "SELECT usuario FROM usuarios " +
-                    "WHERE usuario = ?user AND pass = ?pass";
-
-                conectar();
-
-                try
-                {
-                    MySqlCommand comando = new MySqlCommand(consulta, conn);
-
-                    comando.Parameters.AddWithValue("?user", user);
-                    comando.Parameters.AddWithValue("?pass", pass);
-
-                    MySqlDataReader lector = comando.ExecuteReader();
-
-                    if (lector.Read())
-                    {
-                        return true;
-                    }
-                }
-                catch (MySqlException e)
-                {
-                    MessageBox.Show("Error en la consulta a base de datos.\n" + e.Message);
-                }
-                finally
-                {
-                    cerrar();
-                }
-
-                return false;
+                MessageBox.Show("Error al conectar con la base de datos.\n" + e.Message);
             }
 
         }
+
+        public static void cerrar()
+        {
+            if (conn != null)
+            {
+                try
+                {
+                    conn.Close();
+                }
+                catch (MySqlException e)
+                {
+                    MessageBox.Show("Error al cerrar la conexión con la base de datos.\n" + e.Message);
+                }
+            }
+
+        }
+
+
+
+
+    
+      // Devuelve el tipo ("admin"/"user") si login correcto, null si falla
+        public static string Login(string usuario, string pass)
+        {
+            conectar();
+            try
+            {
+                string sql = "SELECT tipo FROM usuarios WHERE usuario=@u AND pass=@p AND estado='activo'";
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("@u", usuario);
+                cmd.Parameters.AddWithValue("@p", pass);
+                object resultado = cmd.ExecuteScalar();
+                return resultado != null ? resultado.ToString() : null;
+            }
+            catch (MySqlException e)
+            {
+                MessageBox.Show("Error en el login.\n" + e.Message);
+                return null;
+            }
+            finally
+            {
+                cerrar();
+            }
+        }
+
+        // Registra el acceso en la tabla accesos
+        public static void RegistrarAcceso(string usuario)
+        {
+            conectar();
+            try
+            {
+                string sql = "INSERT INTO accesos (usuario, fecha, ip) VALUES (@u, @f, @ip)";
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("@u", usuario);
+                cmd.Parameters.AddWithValue("@f", DateTime.Now.Date);
+                cmd.Parameters.AddWithValue("@ip", ObtenerIP());
+                cmd.ExecuteNonQuery();
+            }
+            catch (MySqlException e)
+            {
+                MessageBox.Show("Error al registrar acceso.\n" + e.Message);
+            }
+            finally
+            {
+                cerrar();
+            }
+        }
+
+        private static string ObtenerIP()
+        {
+            try
+            {
+                foreach (var ip in System.Net.Dns.GetHostAddresses(System.Net.Dns.GetHostName()))
+                    if (ip.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork)
+                        return ip.ToString();
+            }
+            catch { }
+            return "127.0.0.1";
+        }
+    }
 }
