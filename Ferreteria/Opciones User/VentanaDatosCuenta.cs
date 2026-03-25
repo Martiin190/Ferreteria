@@ -16,5 +16,10 @@ namespace Ferreteria.Opciones_User
         {
             InitializeComponent();
         }
+
+        private void VentanaDatosCuenta_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
