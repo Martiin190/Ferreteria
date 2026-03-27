@@ -1,6 +1,6 @@
 ﻿namespace Ferreteria.Opciones_Admin
 {
-    //prueba
+    //prueba1
     partial class VentanaRegistrarArticulo
     {
         /// <summary>
