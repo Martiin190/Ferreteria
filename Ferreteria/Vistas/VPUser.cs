@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Ferreteria.Opciones_User;
 
 namespace Ferreteria.Vistas
 {
@@ -15,6 +16,12 @@ namespace Ferreteria.Vistas
         public VPUser()
         {
             InitializeComponent();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            VentanaDatosCuenta ventana = new VentanaDatosCuenta();
+            ventana.Show();
         }
     }
 }

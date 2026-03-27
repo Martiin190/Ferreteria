@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Ferreteria.bbdd;
+using Ferreteria.Modelos;
 using Ferreteria.Vistas;
 
 namespace Ferreteria
@@ -27,11 +28,13 @@ namespace Ferreteria
         private void button1_Click(object sender, EventArgs e)
         {
             string tipo = Conexion.Login(CampoUsuario.Text, CampoPass.Text);
-
             if (tipo != null)
             {
-                Conexion.RegistrarAcceso(CampoUsuario.Text);
+                // ✅ AÑADE ESTAS DOS LÍNEAS AQUÍ
+                Usuario.UsuarioLogado = CampoUsuario.Text;
+                Usuario.TipoUsuario = tipo;
 
+                Conexion.RegistrarAcceso(CampoUsuario.Text);
                 if (tipo == "admin")
                 {
                     VPAdmin fp = new VPAdmin();
@@ -42,7 +45,6 @@ namespace Ferreteria
                     VPUser fp = new VPUser();
                     fp.Show();
                 }
-
                 this.Hide();
             }
             else
@@ -50,8 +52,7 @@ namespace Ferreteria
                 MessageBox.Show("Usuario o contraseña incorrectos, o usuario bloqueado.");
             }
         }
-    
-        }
-        }
+    }
+}
     
 

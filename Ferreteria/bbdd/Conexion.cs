@@ -113,5 +113,77 @@ namespace Ferreteria.bbdd
             catch { }
             return "127.0.0.1";
         }
+
+
+        public static MySqlDataReader GetDatosCuenta(string usuario)
+        {
+            conectar();
+            string sql = "SELECT nombre_apellidos, usuario, pass, tipo, estado, fecha_alta " +
+                         "FROM usuarios WHERE usuario = @u";
+            MySqlCommand cmd = new MySqlCommand(sql, conn);
+            cmd.Parameters.AddWithValue("@u", usuario);
+            // CommandBehavior.CloseConnection cierra la conn al cerrar el reader
+            return cmd.ExecuteReader(System.Data.CommandBehavior.CloseConnection);
+        }
+
+        // Actualiza nombre y opcionalmente la contraseña
+        public static bool ActualizarCuenta(string usuario, string nombre, string nuevaPass)
+        {
+            conectar();
+            try
+            {
+                string sql;
+
+                if (nuevaPass != null)
+                    sql = "UPDATE usuarios SET nombre_apellidos = @nombre, pass = @pass " +
+                          "WHERE usuario = @u";
+                else
+                    sql = "UPDATE usuarios SET nombre_apellidos = @nombre " +
+                          "WHERE usuario = @u";
+
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("@nombre", nombre);
+                cmd.Parameters.AddWithValue("@u", usuario);
+
+                if (nuevaPass != null)
+                    cmd.Parameters.AddWithValue("@pass", nuevaPass);
+
+                int filas = cmd.ExecuteNonQuery();
+                return filas > 0;
+            }
+            catch (MySqlException e)
+            {
+                MessageBox.Show("Error al actualizar la cuenta.\n" + e.Message);
+                return false;
+            }
+            finally
+            {
+                cerrar();
+            }
+        }
+
+        // Verifica que la contraseña actual introducida es correcta
+        public static bool VerificarPass(string usuario, string pass)
+        {
+            conectar();
+            try
+            {
+                string sql = "SELECT COUNT(*) FROM usuarios WHERE usuario = @u AND pass = @p";
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("@u", usuario);
+                cmd.Parameters.AddWithValue("@p", pass);
+                int resultado = Convert.ToInt32(cmd.ExecuteScalar());
+                return resultado > 0;
+            }
+            catch (MySqlException e)
+            {
+                MessageBox.Show("Error al verificar la contraseña.\n" + e.Message);
+                return false;
+            }
+            finally
+            {
+                cerrar();
+            }
+        }
     }
 }

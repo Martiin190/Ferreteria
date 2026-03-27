@@ -8,6 +8,7 @@ namespace Ferreteria.Modelos
 {
     internal class Usuario
     {
-        //Esto es una prueba 
+        public static string UsuarioLogado { get; set; }
+        public static string TipoUsuario { get; set; }
     }
 }
