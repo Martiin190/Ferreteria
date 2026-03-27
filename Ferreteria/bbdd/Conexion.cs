@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Security.Policy;
@@ -185,5 +186,28 @@ namespace Ferreteria.bbdd
                 cerrar();
             }
         }
+
+
+        public static DataTable GetTabla(string sql)
+        {
+            conectar();
+            try
+            {
+                MySqlDataAdapter da = new MySqlDataAdapter(sql, conn);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                return dt;
+            }
+            catch (MySqlException e)
+            {
+                MessageBox.Show("Error al cargar datos.\n" + e.Message);
+                return null;
+            }
+            finally
+            {
+                cerrar();
+            }
+        }
     }
-}
+    }
+

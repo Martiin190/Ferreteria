@@ -23,5 +23,11 @@ namespace Ferreteria.Vistas
             VentanaDatosCuenta ventana = new VentanaDatosCuenta();
             ventana.Show();
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            VentanaListadoArtículosDestacados ventana = new VentanaListadoArtículosDestacados();
+            ventana.Show();
+        }
     }
 }
