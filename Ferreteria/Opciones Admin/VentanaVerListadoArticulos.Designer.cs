@@ -42,26 +42,26 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.textBox11 = new System.Windows.Forms.TextBox();
-            this.textBox10 = new System.Windows.Forms.TextBox();
-            this.textBox9 = new System.Windows.Forms.TextBox();
-            this.textBox8 = new System.Windows.Forms.TextBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.botonActualizar = new System.Windows.Forms.Button();
+            this.botonEliminar = new System.Windows.Forms.Button();
+            this.campoFechaAlta = new System.Windows.Forms.TextBox();
+            this.campoOferta = new System.Windows.Forms.TextBox();
+            this.campoDestacado = new System.Windows.Forms.TextBox();
+            this.campoOrigen = new System.Windows.Forms.TextBox();
+            this.campoStock = new System.Windows.Forms.TextBox();
+            this.campoPrecioVenta = new System.Windows.Forms.TextBox();
+            this.campoPrecioCompra = new System.Windows.Forms.TextBox();
+            this.campoDescripcion = new System.Windows.Forms.TextBox();
+            this.campoNombre = new System.Windows.Forms.TextBox();
+            this.campoCategoria = new System.Windows.Forms.TextBox();
+            this.campoCodigo = new System.Windows.Forms.TextBox();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.articulos = new System.Windows.Forms.DataGridView();
+            this.comboArticulo = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.articulos)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -96,19 +96,19 @@
             this.panel2.Controls.Add(this.label3);
             this.panel2.Controls.Add(this.label2);
             this.panel2.Controls.Add(this.label1);
-            this.panel2.Controls.Add(this.button2);
-            this.panel2.Controls.Add(this.button1);
-            this.panel2.Controls.Add(this.textBox11);
-            this.panel2.Controls.Add(this.textBox10);
-            this.panel2.Controls.Add(this.textBox9);
-            this.panel2.Controls.Add(this.textBox8);
-            this.panel2.Controls.Add(this.textBox7);
-            this.panel2.Controls.Add(this.textBox6);
-            this.panel2.Controls.Add(this.textBox5);
-            this.panel2.Controls.Add(this.textBox4);
-            this.panel2.Controls.Add(this.textBox3);
-            this.panel2.Controls.Add(this.textBox2);
-            this.panel2.Controls.Add(this.textBox1);
+            this.panel2.Controls.Add(this.botonActualizar);
+            this.panel2.Controls.Add(this.botonEliminar);
+            this.panel2.Controls.Add(this.campoFechaAlta);
+            this.panel2.Controls.Add(this.campoOferta);
+            this.panel2.Controls.Add(this.campoDestacado);
+            this.panel2.Controls.Add(this.campoOrigen);
+            this.panel2.Controls.Add(this.campoStock);
+            this.panel2.Controls.Add(this.campoPrecioVenta);
+            this.panel2.Controls.Add(this.campoPrecioCompra);
+            this.panel2.Controls.Add(this.campoDescripcion);
+            this.panel2.Controls.Add(this.campoNombre);
+            this.panel2.Controls.Add(this.campoCategoria);
+            this.panel2.Controls.Add(this.campoCodigo);
             this.panel2.Location = new System.Drawing.Point(371, 72);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(305, 542);
@@ -224,139 +224,139 @@
             this.label1.TabIndex = 13;
             this.label1.Text = "Codigo";
             // 
-            // button2
+            // botonActualizar
             // 
-            this.button2.Location = new System.Drawing.Point(179, 509);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(110, 23);
-            this.button2.TabIndex = 12;
-            this.button2.Text = "Actualizar";
-            this.button2.UseVisualStyleBackColor = true;
+            this.botonActualizar.Location = new System.Drawing.Point(179, 509);
+            this.botonActualizar.Name = "botonActualizar";
+            this.botonActualizar.Size = new System.Drawing.Size(110, 23);
+            this.botonActualizar.TabIndex = 12;
+            this.botonActualizar.Text = "Actualizar";
+            this.botonActualizar.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // botonEliminar
             // 
-            this.button1.Location = new System.Drawing.Point(98, 509);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 11;
-            this.button1.Text = "Eliminar";
-            this.button1.UseVisualStyleBackColor = true;
+            this.botonEliminar.Location = new System.Drawing.Point(98, 509);
+            this.botonEliminar.Name = "botonEliminar";
+            this.botonEliminar.Size = new System.Drawing.Size(75, 23);
+            this.botonEliminar.TabIndex = 11;
+            this.botonEliminar.Text = "Eliminar";
+            this.botonEliminar.UseVisualStyleBackColor = true;
             // 
-            // textBox11
+            // campoFechaAlta
             // 
-            this.textBox11.Enabled = false;
-            this.textBox11.Location = new System.Drawing.Point(23, 459);
-            this.textBox11.Name = "textBox11";
-            this.textBox11.Size = new System.Drawing.Size(245, 22);
-            this.textBox11.TabIndex = 10;
+            this.campoFechaAlta.Enabled = false;
+            this.campoFechaAlta.Location = new System.Drawing.Point(23, 459);
+            this.campoFechaAlta.Name = "campoFechaAlta";
+            this.campoFechaAlta.Size = new System.Drawing.Size(245, 22);
+            this.campoFechaAlta.TabIndex = 10;
             // 
-            // textBox10
+            // campoOferta
             // 
-            this.textBox10.Enabled = false;
-            this.textBox10.Location = new System.Drawing.Point(168, 409);
-            this.textBox10.Name = "textBox10";
-            this.textBox10.Size = new System.Drawing.Size(100, 22);
-            this.textBox10.TabIndex = 9;
+            this.campoOferta.Enabled = false;
+            this.campoOferta.Location = new System.Drawing.Point(168, 409);
+            this.campoOferta.Name = "campoOferta";
+            this.campoOferta.Size = new System.Drawing.Size(100, 22);
+            this.campoOferta.TabIndex = 9;
             // 
-            // textBox9
+            // campoDestacado
             // 
-            this.textBox9.Enabled = false;
-            this.textBox9.Location = new System.Drawing.Point(23, 409);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(100, 22);
-            this.textBox9.TabIndex = 8;
+            this.campoDestacado.Enabled = false;
+            this.campoDestacado.Location = new System.Drawing.Point(23, 409);
+            this.campoDestacado.Name = "campoDestacado";
+            this.campoDestacado.Size = new System.Drawing.Size(100, 22);
+            this.campoDestacado.TabIndex = 8;
             // 
-            // textBox8
+            // campoOrigen
             // 
-            this.textBox8.Enabled = false;
-            this.textBox8.Location = new System.Drawing.Point(168, 347);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(100, 22);
-            this.textBox8.TabIndex = 7;
+            this.campoOrigen.Enabled = false;
+            this.campoOrigen.Location = new System.Drawing.Point(168, 347);
+            this.campoOrigen.Name = "campoOrigen";
+            this.campoOrigen.Size = new System.Drawing.Size(100, 22);
+            this.campoOrigen.TabIndex = 7;
             // 
-            // textBox7
+            // campoStock
             // 
-            this.textBox7.Enabled = false;
-            this.textBox7.Location = new System.Drawing.Point(23, 347);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(100, 22);
-            this.textBox7.TabIndex = 6;
+            this.campoStock.Enabled = false;
+            this.campoStock.Location = new System.Drawing.Point(23, 347);
+            this.campoStock.Name = "campoStock";
+            this.campoStock.Size = new System.Drawing.Size(100, 22);
+            this.campoStock.TabIndex = 6;
             // 
-            // textBox6
+            // campoPrecioVenta
             // 
-            this.textBox6.Enabled = false;
-            this.textBox6.Location = new System.Drawing.Point(168, 283);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(100, 22);
-            this.textBox6.TabIndex = 5;
+            this.campoPrecioVenta.Enabled = false;
+            this.campoPrecioVenta.Location = new System.Drawing.Point(168, 283);
+            this.campoPrecioVenta.Name = "campoPrecioVenta";
+            this.campoPrecioVenta.Size = new System.Drawing.Size(100, 22);
+            this.campoPrecioVenta.TabIndex = 5;
             // 
-            // textBox5
+            // campoPrecioCompra
             // 
-            this.textBox5.Enabled = false;
-            this.textBox5.Location = new System.Drawing.Point(23, 283);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(100, 22);
-            this.textBox5.TabIndex = 4;
+            this.campoPrecioCompra.Enabled = false;
+            this.campoPrecioCompra.Location = new System.Drawing.Point(23, 283);
+            this.campoPrecioCompra.Name = "campoPrecioCompra";
+            this.campoPrecioCompra.Size = new System.Drawing.Size(100, 22);
+            this.campoPrecioCompra.TabIndex = 4;
             // 
-            // textBox4
+            // campoDescripcion
             // 
-            this.textBox4.Enabled = false;
-            this.textBox4.Location = new System.Drawing.Point(23, 168);
-            this.textBox4.Multiline = true;
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(245, 84);
-            this.textBox4.TabIndex = 3;
+            this.campoDescripcion.Enabled = false;
+            this.campoDescripcion.Location = new System.Drawing.Point(23, 168);
+            this.campoDescripcion.Multiline = true;
+            this.campoDescripcion.Name = "campoDescripcion";
+            this.campoDescripcion.Size = new System.Drawing.Size(245, 84);
+            this.campoDescripcion.TabIndex = 3;
             // 
-            // textBox3
+            // campoNombre
             // 
-            this.textBox3.Enabled = false;
-            this.textBox3.Location = new System.Drawing.Point(23, 103);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(245, 22);
-            this.textBox3.TabIndex = 2;
+            this.campoNombre.Enabled = false;
+            this.campoNombre.Location = new System.Drawing.Point(23, 103);
+            this.campoNombre.Name = "campoNombre";
+            this.campoNombre.Size = new System.Drawing.Size(245, 22);
+            this.campoNombre.TabIndex = 2;
             // 
-            // textBox2
+            // campoCategoria
             // 
-            this.textBox2.Enabled = false;
-            this.textBox2.Location = new System.Drawing.Point(168, 41);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 22);
-            this.textBox2.TabIndex = 1;
+            this.campoCategoria.Enabled = false;
+            this.campoCategoria.Location = new System.Drawing.Point(168, 41);
+            this.campoCategoria.Name = "campoCategoria";
+            this.campoCategoria.Size = new System.Drawing.Size(100, 22);
+            this.campoCategoria.TabIndex = 1;
             // 
-            // textBox1
+            // campoCodigo
             // 
-            this.textBox1.Enabled = false;
-            this.textBox1.Location = new System.Drawing.Point(23, 41);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 22);
-            this.textBox1.TabIndex = 0;
+            this.campoCodigo.Enabled = false;
+            this.campoCodigo.Location = new System.Drawing.Point(23, 41);
+            this.campoCodigo.Name = "campoCodigo";
+            this.campoCodigo.Size = new System.Drawing.Size(100, 22);
+            this.campoCodigo.TabIndex = 0;
             // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.dataGridView1);
-            this.panel3.Controls.Add(this.comboBox1);
+            this.panel3.Controls.Add(this.articulos);
+            this.panel3.Controls.Add(this.comboArticulo);
             this.panel3.Location = new System.Drawing.Point(12, 72);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(353, 542);
             this.panel3.TabIndex = 21;
             // 
-            // dataGridView1
+            // articulos
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(7, 75);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(338, 406);
-            this.dataGridView1.TabIndex = 21;
+            this.articulos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.articulos.Location = new System.Drawing.Point(7, 75);
+            this.articulos.Name = "articulos";
+            this.articulos.RowHeadersWidth = 51;
+            this.articulos.RowTemplate.Height = 24;
+            this.articulos.Size = new System.Drawing.Size(338, 406);
+            this.articulos.TabIndex = 21;
             // 
-            // comboBox1
+            // comboArticulo
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(67, 23);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(266, 24);
-            this.comboBox1.TabIndex = 20;
+            this.comboArticulo.FormattingEnabled = true;
+            this.comboArticulo.Location = new System.Drawing.Point(67, 23);
+            this.comboArticulo.Name = "comboArticulo";
+            this.comboArticulo.Size = new System.Drawing.Size(266, 24);
+            this.comboArticulo.TabIndex = 20;
             // 
             // VentanaVerListadoArticulos
             // 
@@ -374,7 +374,7 @@
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.articulos)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -384,11 +384,11 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox campoCategoria;
+        private System.Windows.Forms.TextBox campoCodigo;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.DataGridView articulos;
+        private System.Windows.Forms.ComboBox comboArticulo;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
@@ -400,16 +400,16 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox11;
-        private System.Windows.Forms.TextBox textBox10;
-        private System.Windows.Forms.TextBox textBox9;
-        private System.Windows.Forms.TextBox textBox8;
-        private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.Button botonActualizar;
+        private System.Windows.Forms.Button botonEliminar;
+        private System.Windows.Forms.TextBox campoFechaAlta;
+        private System.Windows.Forms.TextBox campoOferta;
+        private System.Windows.Forms.TextBox campoDestacado;
+        private System.Windows.Forms.TextBox campoOrigen;
+        private System.Windows.Forms.TextBox campoStock;
+        private System.Windows.Forms.TextBox campoPrecioVenta;
+        private System.Windows.Forms.TextBox campoPrecioCompra;
+        private System.Windows.Forms.TextBox campoDescripcion;
+        private System.Windows.Forms.TextBox campoNombre;
     }
 }
