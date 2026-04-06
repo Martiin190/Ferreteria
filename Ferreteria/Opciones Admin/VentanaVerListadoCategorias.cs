@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Ferreteria.bbdd;
+using MySqlConnector;
 
 namespace Ferreteria.Opciones_Admin
 {
@@ -16,8 +17,10 @@ namespace Ferreteria.Opciones_Admin
         public VentanaVerListadoCategorias()
         {
             InitializeComponent();
+            this.Load += VentanaVerListadoCategorias_Load;
+            this.articulos.SelectionChanged += articulos_SelectionChanged;
+            ConfiguracionInicial();
         }
-
         private void VentanaVerListadoCategorias_Load(object sender, EventArgs e)
         {
             CargarCategorias();
@@ -26,54 +29,65 @@ namespace Ferreteria.Opciones_Admin
         private void ConfiguracionInicial()
         {
             panelDatos.Visible = false;
-
+            articulos.ReadOnly = true;
+            articulos.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            articulos.MultiSelect = false;
+            articulos.AllowUserToAddRows = false;
+            articulos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
             this.FormBorderStyle = FormBorderStyle.FixedDialog;
-            this.StartPosition = FormStartPosition.CenterScreen; 
+            this.StartPosition = FormStartPosition.CenterScreen;
             this.MaximizeBox = false;
         }
 
         private void CargarCategorias()
         {
-            string sql = "SELECT categoria AS Denominacion, descripcion AS Descripcion FROM categorias";
-            //articulos.DataSource = Conexion.ObtenerDatos(sql);
+            DataTable dt = Conexion.VerListadoCategorias();
+
+            if (dt != null)
+                articulos.DataSource = dt;
+
+            comboCategoria.DataSource = new DataTable(); // limpia primero para evitar conflicto
+            comboCategoria.DataSource = dt;
+            comboCategoria.DisplayMember = "Denominacion";
+            comboCategoria.ValueMember = "Denominacion";
+            comboCategoria.SelectedIndex = -1;
         }
 
-        private void dgvCategorias_SelectionChanged(object sender, EventArgs e)
+        private void articulos_SelectionChanged(object sender, EventArgs e)
         {
             if (articulos.SelectedRows.Count > 0)
             {
-                panelDatos.Visible = true;
+                DataRow fila = ((DataRowView)articulos.SelectedRows[0].DataBoundItem).Row;
 
-                DataGridViewRow fila = articulos.SelectedRows[0];
-                denominacion.Text = fila.Cells["Denominacion"].Value.ToString();
-                descripcion.Text = fila.Cells["Descripcion"].Value.ToString();
+                denominacion.Text = fila["Denominacion"].ToString();
+                descripcion.Text = fila["Descripcion"].ToString();
+
+                panelDatos.Visible = true;
             }
         }
 
-        private void btnRegistrarCategoria_Click(object sender, EventArgs e)
+        private void registrarCategoria_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(denominacion.Text) || string.IsNullOrWhiteSpace(descripcion.Text))
             {
-                MessageBox.Show("Todos los campos son obligatorios", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Todos los campos son obligatorios", "Validación",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            try
-            {
-                 //Conexion.Ejecutar(denominacion.Text, descripcion.Text);
+            bool ok = Conexion.RegistrarCategoria(denominacion.Text.Trim(), descripcion.Text.Trim());
 
-                MessageBox.Show("Registro realizado correctamente", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information); // 
+            if (ok)
+            {
+                MessageBox.Show("Registro realizado correctamente", "Éxito",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
                 CargarCategorias();
                 LimpiarCampos();
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al registrar: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
         }
 
-        private void btnLimpiar_Click(object sender, EventArgs e)
+        private void limpiar_Click(object sender, EventArgs e)
         {
             LimpiarCampos();
         }

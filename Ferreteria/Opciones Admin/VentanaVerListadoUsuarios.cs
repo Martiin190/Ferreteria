@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Ferreteria.bbdd;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,100 +8,101 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MySqlConnector;
 
 namespace Ferreteria.Opciones_Admin
 {
     public partial class VentanaVerListadoUsuarios : Form
     {
 
-        private int idUsuarioSeleccionado = -1;
-
         public VentanaVerListadoUsuarios()
         {
             InitializeComponent();
-            ConfiguracionProyecto();
+            this.Load += VentanaVerListadoUsuarios_Load;
+            this.usuarios.SelectionChanged += usuarios_SelectionChanged;
+            this.comboUsuarios.SelectedIndexChanged += comboUsuarios_SelectedIndexChanged;
         }
 
         private void VentanaVerListadoUsuarios_Load(object sender, EventArgs e)
         {
-            RefrescarListaUsuarios();
+            ConfigurarTabla();
+            CargarUsuarios();
         }
 
-        private void ConfiguracionProyecto()
+        private void ConfigurarTabla()
         {
-            panelDatos.Visible = false;
-
-            comboTipo.Items.AddRange(new string[] { "admin", "user" });
-            comboEstado.Items.AddRange(new string[] { "activo", "bloqueado" });
+            usuarios.ReadOnly = true;
+            usuarios.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            usuarios.MultiSelect = false;
+            usuarios.AllowUserToAddRows = false;
+            usuarios.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
 
-        private void RefrescarListaUsuarios()
+        private void CargarUsuarios()
         {
-            // Consulta: "SELECT idUsuario, nombre_apellidos, tienda, usuario, tipo, estado, fecha_alta FROM usuarios"
-            // usuarios.DataSource = Conexion.EjecutarConsulta(sql);
+            DataTable dt = Conexion.VerListadoUsuarios();
+
+            if (dt != null)
+            {
+                usuarios.DataSource = dt;
+
+                comboUsuarios.DataSource = new DataTable();
+                comboUsuarios.DataSource = dt;
+                comboUsuarios.DisplayMember = "nombre_apellidos";
+                comboUsuarios.ValueMember = "idUsuario";
+                comboUsuarios.SelectedIndex = -1;
+            }
         }
 
-        private void dgvUsuarios_SelectionChanged(object sender, EventArgs e)
+        private void CargarDetalle(DataRow fila)
+        {
+            nombreYApellidos.Text = fila["nombre_apellidos"].ToString();
+            usuario.Text = fila["usuario"].ToString();
+            fechaAlta.Text = Convert.ToDateTime(fila["fecha_alta"]).ToShortDateString();
+            comboTienda.Text = fila["tienda"].ToString();
+            comboTipo.Text = fila["tipo"].ToString();
+            comboEstado.Text = fila["estado"].ToString();
+        }
+
+        private void usuarios_SelectionChanged(object sender, EventArgs e)
         {
             if (usuarios.SelectedRows.Count > 0)
             {
-                panelDatos.Visible = true;
-
-                DataGridViewRow fila = usuarios.SelectedRows[0];
-                idUsuarioSeleccionado = Convert.ToInt32(fila.Cells["idUsuario"].Value);
-
-                nombre.Text = fila.Cells["nombre_apellidos"].Value.ToString();
-                usuario.Text = fila.Cells["usuario"].Value.ToString();
-                fechaAlta.Text = fila.Cells["fecha_alta"].Value.ToString();
-
-                comboTienda.Text = fila.Cells["tienda"].Value.ToString();
-                comboTipo.SelectedItem = fila.Cells["tipo"].Value.ToString();
-                comboEstado.SelectedItem = fila.Cells["estado"].Value.ToString();
+                DataRow fila = ((DataRowView)usuarios.SelectedRows[0].DataBoundItem).Row;
+                CargarDetalle(fila);
             }
         }
 
-        private void actualizar_Click(object sender, EventArgs e)
+        private void comboUsuarios_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (idUsuarioSeleccionado == -1) return;
-
-            if (string.IsNullOrWhiteSpace(comboTienda.Text) || comboTipo.SelectedIndex == -1 || comboEstado.SelectedIndex == -1)
+            if (comboUsuarios.SelectedItem != null && comboUsuarios.Focused)
             {
-                MessageBox.Show("Los campos Tienda, Tipo y Estado son obligatorios para la actualización.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            try
-            {
-                string sql = $"UPDATE usuarios SET tienda='{comboTienda.Text}', tipo='{comboTipo.Text}', estado='{comboEstado.Text}' WHERE idUsuario={idUsuarioSeleccionado}";
-
-
-                MessageBox.Show("Usuario actualizado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                RefrescarListaUsuarios();
-                LimpiarFormulario();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al actualizar: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                DataRow fila = ((DataRowView)comboUsuarios.SelectedItem).Row;
+                CargarDetalle(fila);
             }
         }
 
         private void limpiar_Click(object sender, EventArgs e)
         {
-            LimpiarFormulario();
+            LimpiarCampos();
         }
 
-        private void LimpiarFormulario()
+        private void LimpiarCampos()
         {
-            nombre.Clear();
+            nombreYApellidos.Clear();
             usuario.Clear();
+            fechaAlta.Clear();
             comboTienda.SelectedIndex = -1;
             comboTipo.SelectedIndex = -1;
             comboEstado.SelectedIndex = -1;
-            idUsuarioSeleccionado = -1;
             usuarios.ClearSelection();
+            comboUsuarios.SelectedIndex = -1;
+        }
 
-            panelDatos.Visible = false;
+        private void actualizar_Click(object sender, EventArgs e)
+        {
+            // Aquí irá la lógica de actualizar cuando la tengas
         }
     }
 }
+

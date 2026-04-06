@@ -79,9 +79,9 @@
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.Location = new System.Drawing.Point(22, 18);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(387, 29);
+            this.label12.Size = new System.Drawing.Size(250, 29);
             this.label12.TabIndex = 0;
-            this.label12.Text = "Listado de Articulos Destacados";
+            this.label12.Text = "Listado de Articulos ";
             // 
             // panel2
             // 

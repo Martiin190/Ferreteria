@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Ferreteria.bbdd;
+using MySqlConnector;
 
 namespace Ferreteria.Opciones_Admin
 {
@@ -16,40 +17,65 @@ namespace Ferreteria.Opciones_Admin
         public VentanaVerListadoTiendas()
         {
             InitializeComponent();
+            this.Load += VentanaVerListadoTiendas_Load;
+            this.tiendas.SelectionChanged += tiendas_SelectionChanged;
+            ConfiguracionInterfaz();
         }
 
         private void VentanaVerListadoTiendas_Load(object sender, EventArgs e)
         {
             CargarListadoTiendas();
-            CargarResponsablesEnCombo(); 
+            CargarResponsablesEnCombo();
         }
 
         private void ConfiguracionInterfaz()
         {
             panelDatos.Visible = false;
+            tiendas.ReadOnly = true;
+            tiendas.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            tiendas.MultiSelect = false;
+            tiendas.AllowUserToAddRows = false;
+            tiendas.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
 
         private void CargarListadoTiendas()
         {
-            // Consulta: "SELECT denominacion, direccion, responsable FROM tiendas"
-            // dgvTiendas.DataSource = db.Consultar(sql);
+            DataTable dt = Conexion.VerListadoTiendas();
+
+            if (dt != null)
+                tiendas.DataSource = dt;
+
+            comboTiendas.DataSource = new DataTable();
+            comboTiendas.DataSource = dt;
+            comboTiendas.DisplayMember = "Denominacion";
+            comboTiendas.ValueMember = "Denominacion";
+            comboTiendas.SelectedIndex = -1;
         }
 
         private void CargarResponsablesEnCombo()
         {
-            //comboResponsable.DataSource = Conexion.Consultar("SELECT nombre_apellidos FROM responsables_tienda");
+            DataTable dt = Conexion.GetResponsables();
+
+            if (dt != null)
+            {
+                comboResponsable.DataSource = dt;
+                comboResponsable.DisplayMember = "nombre_apellidos";
+                comboResponsable.ValueMember = "nombre_apellidos";
+                comboResponsable.SelectedIndex = -1;
+            }
         }
 
         private void tiendas_SelectionChanged(object sender, EventArgs e)
         {
             if (tiendas.SelectedRows.Count > 0)
             {
-                panelDatos.Visible = true;
+                DataRow fila = ((DataRowView)tiendas.SelectedRows[0].DataBoundItem).Row;
 
-                DataGridViewRow fila = tiendas.SelectedRows[0];
-                denominacion.Text = fila.Cells["denominacion"].Value.ToString();
-                direccion.Text = fila.Cells["direccion"].Value.ToString();
-                comboResponsable.Text = fila.Cells["responsable"].Value.ToString();
+                denominacion.Text = fila["denominacion"].ToString();
+                direccion.Text = fila["direccion"].ToString();
+                comboResponsable.Text = fila["responsable"].ToString();
+
+                panelDatos.Visible = true;
             }
         }
 
@@ -59,23 +85,23 @@ namespace Ferreteria.Opciones_Admin
                 string.IsNullOrWhiteSpace(direccion.Text) ||
                 comboResponsable.SelectedIndex == -1)
             {
-                MessageBox.Show("Todos los campos de registro son obligatorios", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Todos los campos de registro son obligatorios", "Validación",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            try
+            bool ok = Conexion.RegistrarTienda(
+                denominacion.Text.Trim(),
+                direccion.Text.Trim(),
+                comboResponsable.SelectedValue.ToString()
+            );
+
+            if (ok)
             {
-
-                // Conexion.Ejecutar($"INSERT INTO tiendas VALUES ('{txtDenominacion.Text}', '{txtDireccion.Text}', '{comboResponsable.Text}')");
-
-                MessageBox.Show("Registro realizado correctamente", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
+                MessageBox.Show("Registro realizado correctamente", "Éxito",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
                 CargarListadoTiendas();
                 LimpiarFormulario();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al registrar tienda: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -90,7 +116,6 @@ namespace Ferreteria.Opciones_Admin
             direccion.Clear();
             comboResponsable.SelectedIndex = -1;
             tiendas.ClearSelection();
-
             panelDatos.Visible = false;
         }
     }
