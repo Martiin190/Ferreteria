@@ -27,6 +27,10 @@ namespace Ferreteria.Opciones_Admin
         {
             ConfigurarTabla();
             CargarUsuarios();
+
+            CargarComboTiendas();
+            CargarComboTipo();
+            CargarComboEstado();
         }
 
         private void ConfigurarTabla()
@@ -36,6 +40,34 @@ namespace Ferreteria.Opciones_Admin
             usuarios.MultiSelect = false;
             usuarios.AllowUserToAddRows = false;
             usuarios.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+        }
+
+        private void CargarComboTiendas()
+        {
+            DataTable dt = Conexion.VerListadoTiendas(); 
+            if (dt != null)
+            {
+                comboTienda.DataSource = dt;
+                comboTienda.DisplayMember = "denominacion"; 
+                comboTienda.ValueMember = "denominacion";   
+                comboTienda.SelectedIndex = -1; 
+            }
+        }
+
+        private void CargarComboTipo()
+        {
+            comboTipo.Items.Clear();
+            comboTipo.Items.Add("admin");
+            comboTipo.Items.Add("user");
+            comboTipo.SelectedIndex = -1;
+        }
+
+        private void CargarComboEstado()
+        {
+            comboEstado.Items.Clear();
+            comboEstado.Items.Add("activo");
+            comboEstado.Items.Add("bloqueado");
+            comboEstado.SelectedIndex = -1;
         }
 
         private void CargarUsuarios()
@@ -82,36 +114,42 @@ namespace Ferreteria.Opciones_Admin
             }
         }
 
-        private void limpiar_Click(object sender, EventArgs e)
+        private void actualizar_Click_1(object sender, EventArgs e)
         {
-            LimpiarCampos();
-        }
+            if (string.IsNullOrWhiteSpace(usuario.Text))
+            {
+                MessageBox.Show("Por favor, seleccione un usuario de la lista.", "Aviso");
+                return;
+            }
 
-        private void LimpiarCampos()
-        {
-            nombreYApellidos.Clear();
-            usuario.Clear();
-            fechaAlta.Clear();
-            comboTienda.SelectedIndex = -1;
-            comboTipo.SelectedIndex = -1;
-            comboEstado.SelectedIndex = -1;
-            usuarios.ClearSelection();
-            comboUsuarios.SelectedIndex = -1;
-        }
+            if (string.IsNullOrWhiteSpace(nombreYApellidos.Text) ||
+                comboTienda.SelectedIndex == -1 ||
+                comboTipo.SelectedIndex == -1 ||
+                comboEstado.SelectedIndex == -1)
+            {
+                MessageBox.Show("Todos los campos son obligatorios para actualizar.", "Validación");
+                return;
+            }
 
-        private void actualizar_Click(object sender, EventArgs e)
-        {
-            // Aquí irá la lógica de actualizar cuando la tengas
-        }
+            DialogResult confirmar = MessageBox.Show("¿Desea guardar los cambios para el usuario " + usuario.Text + "?",
+                "Confirmar", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-        private void usuario_TextChanged(object sender, EventArgs e)
-        {
+            if (confirmar == DialogResult.Yes)
+            {
+                bool exito = Conexion.ActualizarUsuario(
+                    usuario.Text,
+                    nombreYApellidos.Text.Trim(),
+                    comboTienda.Text,
+                    comboTipo.Text,
+                    comboEstado.Text
+                );
 
-        }
-
-        private void usuarios_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
+                if (exito)
+                {
+                    MessageBox.Show("Usuario actualizado correctamente.", "Éxito");
+                    CargarUsuarios();
+                }
+            }
         }
     }
 }

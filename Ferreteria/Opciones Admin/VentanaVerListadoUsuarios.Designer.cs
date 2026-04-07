@@ -43,7 +43,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.actualizar = new System.Windows.Forms.Button();
-            this.limpiar = new System.Windows.Forms.Button();
             this.usuario = new System.Windows.Forms.TextBox();
             this.nombreYApellidos = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -72,7 +71,6 @@
             this.usuarios.RowTemplate.Height = 24;
             this.usuarios.Size = new System.Drawing.Size(623, 390);
             this.usuarios.TabIndex = 21;
-            this.usuarios.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.usuarios_CellContentClick);
             // 
             // comboUsuarios
             // 
@@ -95,7 +93,6 @@
             this.panelDatos.Controls.Add(this.label4);
             this.panelDatos.Controls.Add(this.label3);
             this.panelDatos.Controls.Add(this.actualizar);
-            this.panelDatos.Controls.Add(this.limpiar);
             this.panelDatos.Controls.Add(this.usuario);
             this.panelDatos.Controls.Add(this.nombreYApellidos);
             this.panelDatos.Location = new System.Drawing.Point(652, 71);
@@ -194,21 +191,13 @@
             // 
             // actualizar
             // 
-            this.actualizar.Location = new System.Drawing.Point(125, 442);
+            this.actualizar.Location = new System.Drawing.Point(79, 442);
             this.actualizar.Name = "actualizar";
             this.actualizar.Size = new System.Drawing.Size(142, 23);
             this.actualizar.TabIndex = 12;
             this.actualizar.Text = "Actualizar";
             this.actualizar.UseVisualStyleBackColor = true;
-            // 
-            // limpiar
-            // 
-            this.limpiar.Location = new System.Drawing.Point(44, 442);
-            this.limpiar.Name = "limpiar";
-            this.limpiar.Size = new System.Drawing.Size(75, 23);
-            this.limpiar.TabIndex = 11;
-            this.limpiar.Text = "Limpiar";
-            this.limpiar.UseVisualStyleBackColor = true;
+            this.actualizar.Click += new System.EventHandler(this.actualizar_Click_1);
             // 
             // usuario
             // 
@@ -218,7 +207,6 @@
             this.usuario.Name = "usuario";
             this.usuario.Size = new System.Drawing.Size(245, 84);
             this.usuario.TabIndex = 3;
-            this.usuario.TextChanged += new System.EventHandler(this.usuario_TextChanged);
             // 
             // nombreYApellidos
             // 
@@ -280,7 +268,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button actualizar;
-        private System.Windows.Forms.Button limpiar;
         private System.Windows.Forms.TextBox usuario;
         private System.Windows.Forms.TextBox nombreYApellidos;
         private System.Windows.Forms.Panel panel1;

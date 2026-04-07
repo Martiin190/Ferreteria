@@ -44,34 +44,14 @@ namespace Ferreteria.Opciones_Admin
         private void botonRegistrar_Click(object sender, EventArgs e)
         {
 
-            if (string.IsNullOrWhiteSpace(campoCodigo.Text) || comboCategoria.SelectedIndex == -1)
+            if (string.IsNullOrWhiteSpace(campoCodigo.Text) ||
+                string.IsNullOrWhiteSpace(campoNombre.Text) ||
+                comboCategoria.SelectedIndex == -1 ||
+                string.IsNullOrWhiteSpace(campoPrecioCompra.Text) ||
+                comboOrigen.SelectedIndex == -1)
             {
-                MessageBox.Show("Faltan campos obligatorios.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Todos los campos de registro son obligatorios.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
-            }
-
-            double.TryParse(campoPrecioCompra.Text, out double pComp);
-            double.TryParse(campoPrecioVenta.Text, out double pVenta);
-            int.TryParse(campoStock.Text, out int stock);
-
-            bool exito = Conexion.RegistrarArticulo(
-                campoCodigo.Text,
-                campoNombre.Text,
-                comboCategoria.Text,
-                campoDescripcion.Text,
-                pComp,
-                pVenta,
-                stock,
-                comboOrigen.Text,
-                radioDestacadoSi.Checked ? "SI" : "NO",
-                radioOfertaSi.Checked ? "SI" : "NO",
-                fechaAlta.Value.Date
-            );
-
-            if (exito)
-            {
-                MessageBox.Show("Registro realizado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                LimpiarCampos();
             }
         }
 

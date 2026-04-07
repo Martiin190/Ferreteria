@@ -543,6 +543,33 @@ namespace Ferreteria.bbdd
             }
         }
 
+        public static bool ActualizarUsuario(string login, string nombre, string tienda, string tipo, string estado)
+        {
+            conectar();
+            try
+            {
+                string sql = @"UPDATE usuarios 
+                       SET nombre_apellidos = @nom, tienda = @tienda, tipo = @tipo, estado = @est 
+                       WHERE usuario = @user";
+
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("@nom", nombre);
+                cmd.Parameters.AddWithValue("@tienda", tienda);
+                cmd.Parameters.AddWithValue("@tipo", tipo);
+                cmd.Parameters.AddWithValue("@est", estado);
+                cmd.Parameters.AddWithValue("@user", login);
+
+                int filas = cmd.ExecuteNonQuery();
+                return filas > 0;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Error al actualizar usuario: " + e.Message);
+                return false;
+            }
+            finally { cerrar(); }
+        }
+
         public static bool RegistrarArticulo(string cod, string nom, string cat, string desc,
         double pComp, double pVenta, int stock, string orig, string dest, string ofer, DateTime fecha)
         {
