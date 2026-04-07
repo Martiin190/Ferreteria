@@ -232,6 +232,7 @@
             this.botonActualizar.TabIndex = 12;
             this.botonActualizar.Text = "Actualizar";
             this.botonActualizar.UseVisualStyleBackColor = true;
+            this.botonActualizar.Click += new System.EventHandler(this.botonActualizar_Click);
             // 
             // botonEliminar
             // 
@@ -241,6 +242,7 @@
             this.botonEliminar.TabIndex = 11;
             this.botonEliminar.Text = "Eliminar";
             this.botonEliminar.UseVisualStyleBackColor = true;
+            this.botonEliminar.Click += new System.EventHandler(this.botonEliminar_Click_1);
             // 
             // campoFechaAlta
             // 

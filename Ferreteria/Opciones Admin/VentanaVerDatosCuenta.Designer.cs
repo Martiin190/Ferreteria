@@ -31,10 +31,15 @@
             this.botonGuardar = new System.Windows.Forms.Button();
             this.botonCancelar = new System.Windows.Forms.Button();
             this.panelCambiarContrasenya = new System.Windows.Forms.GroupBox();
-            this.cambiarContrasenya = new System.Windows.Forms.CheckBox();
+            this.campoConfirmarContrasenya = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.campoNuevaContrasenya = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.campoNombreYApellidos = new System.Windows.Forms.TextBox();
             this.campoNombre = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.comboTipo = new System.Windows.Forms.ComboBox();
+            this.comboEstado = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.fechaAlta = new System.Windows.Forms.DateTimePicker();
@@ -43,14 +48,6 @@
             this.campoUsuario = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label12 = new System.Windows.Forms.Label();
-            this.comboEstado = new System.Windows.Forms.ComboBox();
-            this.comboTipo = new System.Windows.Forms.ComboBox();
-            this.campoContrasenyaActual = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.campoNuevaContrasenya = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.campoConfirmarContrasenya = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
             this.panelCambiarContrasenya.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -64,15 +61,17 @@
             this.botonGuardar.TabIndex = 22;
             this.botonGuardar.Text = "Guardar cambios";
             this.botonGuardar.UseVisualStyleBackColor = true;
+            this.botonGuardar.Click += new System.EventHandler(this.botonGuardar_Click);
             // 
             // botonCancelar
             // 
-            this.botonCancelar.Location = new System.Drawing.Point(431, 453);
+            this.botonCancelar.Location = new System.Drawing.Point(428, 453);
             this.botonCancelar.Name = "botonCancelar";
             this.botonCancelar.Size = new System.Drawing.Size(75, 23);
             this.botonCancelar.TabIndex = 20;
             this.botonCancelar.Text = "Cancelar";
             this.botonCancelar.UseVisualStyleBackColor = true;
+            this.botonCancelar.Click += new System.EventHandler(this.botonCancelar_Click);
             // 
             // panelCambiarContrasenya
             // 
@@ -80,9 +79,6 @@
             this.panelCambiarContrasenya.Controls.Add(this.label7);
             this.panelCambiarContrasenya.Controls.Add(this.campoNuevaContrasenya);
             this.panelCambiarContrasenya.Controls.Add(this.label6);
-            this.panelCambiarContrasenya.Controls.Add(this.campoContrasenyaActual);
-            this.panelCambiarContrasenya.Controls.Add(this.label5);
-            this.panelCambiarContrasenya.Controls.Add(this.cambiarContrasenya);
             this.panelCambiarContrasenya.Controls.Add(this.campoNombreYApellidos);
             this.panelCambiarContrasenya.Controls.Add(this.campoNombre);
             this.panelCambiarContrasenya.Location = new System.Drawing.Point(42, 310);
@@ -92,15 +88,37 @@
             this.panelCambiarContrasenya.TabStop = false;
             this.panelCambiarContrasenya.Text = "DATOS EDITABLES";
             // 
-            // cambiarContrasenya
+            // campoConfirmarContrasenya
             // 
-            this.cambiarContrasenya.AutoSize = true;
-            this.cambiarContrasenya.Location = new System.Drawing.Point(35, 111);
-            this.cambiarContrasenya.Name = "cambiarContrasenya";
-            this.cambiarContrasenya.Size = new System.Drawing.Size(208, 20);
-            this.cambiarContrasenya.TabIndex = 12;
-            this.cambiarContrasenya.Text = "Quiero cambiar mi contraseña";
-            this.cambiarContrasenya.UseVisualStyleBackColor = true;
+            this.campoConfirmarContrasenya.Location = new System.Drawing.Point(401, 53);
+            this.campoConfirmarContrasenya.Name = "campoConfirmarContrasenya";
+            this.campoConfirmarContrasenya.Size = new System.Drawing.Size(122, 22);
+            this.campoConfirmarContrasenya.TabIndex = 18;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(398, 34);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(134, 16);
+            this.label7.TabIndex = 17;
+            this.label7.Text = "Confirmar contraseña";
+            // 
+            // campoNuevaContrasenya
+            // 
+            this.campoNuevaContrasenya.Location = new System.Drawing.Point(223, 53);
+            this.campoNuevaContrasenya.Name = "campoNuevaContrasenya";
+            this.campoNuevaContrasenya.Size = new System.Drawing.Size(122, 22);
+            this.campoNuevaContrasenya.TabIndex = 16;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(220, 34);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(117, 16);
+            this.label6.TabIndex = 15;
+            this.label6.Text = "Nueva contraseña";
             // 
             // campoNombreYApellidos
             // 
@@ -134,6 +152,22 @@
             this.groupBox1.TabIndex = 17;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "DATOS DE SOLO LECTURA";
+            // 
+            // comboTipo
+            // 
+            this.comboTipo.FormattingEnabled = true;
+            this.comboTipo.Location = new System.Drawing.Point(335, 50);
+            this.comboTipo.Name = "comboTipo";
+            this.comboTipo.Size = new System.Drawing.Size(188, 24);
+            this.comboTipo.TabIndex = 10;
+            // 
+            // comboEstado
+            // 
+            this.comboEstado.FormattingEnabled = true;
+            this.comboEstado.Location = new System.Drawing.Point(32, 132);
+            this.comboEstado.Name = "comboEstado";
+            this.comboEstado.Size = new System.Drawing.Size(188, 24);
+            this.comboEstado.TabIndex = 9;
             // 
             // label4
             // 
@@ -204,76 +238,12 @@
             this.label12.TabIndex = 0;
             this.label12.Text = "Datos de la Cuenta";
             // 
-            // comboEstado
-            // 
-            this.comboEstado.FormattingEnabled = true;
-            this.comboEstado.Location = new System.Drawing.Point(32, 132);
-            this.comboEstado.Name = "comboEstado";
-            this.comboEstado.Size = new System.Drawing.Size(188, 24);
-            this.comboEstado.TabIndex = 9;
-            // 
-            // comboTipo
-            // 
-            this.comboTipo.FormattingEnabled = true;
-            this.comboTipo.Location = new System.Drawing.Point(335, 50);
-            this.comboTipo.Name = "comboTipo";
-            this.comboTipo.Size = new System.Drawing.Size(188, 24);
-            this.comboTipo.TabIndex = 10;
-            // 
-            // campoContrasenyaActual
-            // 
-            this.campoContrasenyaActual.Location = new System.Drawing.Point(208, 53);
-            this.campoContrasenyaActual.Name = "campoContrasenyaActual";
-            this.campoContrasenyaActual.Size = new System.Drawing.Size(122, 22);
-            this.campoContrasenyaActual.TabIndex = 14;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(205, 34);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(115, 16);
-            this.label5.TabIndex = 13;
-            this.label5.Text = "Contraseña actual";
-            // 
-            // campoNuevaContrasenya
-            // 
-            this.campoNuevaContrasenya.Location = new System.Drawing.Point(373, 53);
-            this.campoNuevaContrasenya.Name = "campoNuevaContrasenya";
-            this.campoNuevaContrasenya.Size = new System.Drawing.Size(122, 22);
-            this.campoNuevaContrasenya.TabIndex = 16;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(370, 34);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(117, 16);
-            this.label6.TabIndex = 15;
-            this.label6.Text = "Nueva contraseña";
-            // 
-            // campoConfirmarContrasenya
-            // 
-            this.campoConfirmarContrasenya.Location = new System.Drawing.Point(373, 100);
-            this.campoConfirmarContrasenya.Name = "campoConfirmarContrasenya";
-            this.campoConfirmarContrasenya.Size = new System.Drawing.Size(122, 22);
-            this.campoConfirmarContrasenya.TabIndex = 18;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(370, 81);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(134, 16);
-            this.label7.TabIndex = 17;
-            this.label7.Text = "Confirmar contraseña";
-            // 
             // VentanaVerDatosCuenta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(694, 475);
+            this.ClientSize = new System.Drawing.Size(694, 484);
             this.Controls.Add(this.botonGuardar);
             this.Controls.Add(this.botonCancelar);
             this.Controls.Add(this.panelCambiarContrasenya);
@@ -306,7 +276,6 @@
         private System.Windows.Forms.TextBox campoUsuario;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.CheckBox cambiarContrasenya;
         private System.Windows.Forms.TextBox campoNombreYApellidos;
         private System.Windows.Forms.ComboBox comboTipo;
         private System.Windows.Forms.ComboBox comboEstado;
@@ -314,7 +283,5 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox campoNuevaContrasenya;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox campoContrasenyaActual;
-        private System.Windows.Forms.Label label5;
     }
 }

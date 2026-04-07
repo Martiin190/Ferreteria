@@ -1,4 +1,5 @@
-﻿using MySql.Data.MySqlClient;
+﻿using Ferreteria.bbdd;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,9 +18,14 @@ namespace Ferreteria.Opciones_Admin
         public VentanaRegistrarArticulo()
         {
             InitializeComponent();
-
+            this.Load += VentanaRegistrarArticulo_Load;
             radioDestacadoNo.Checked = true;
             radioOfertaNo.Checked = true;
+        }
+
+        private void VentanaRegistrarArticulo_Load(object sender, EventArgs e)
+        {
+            CargarCombos();
         }
 
         private void campoPrecioCompra_TextChanged(object sender, EventArgs e)
@@ -37,66 +43,58 @@ namespace Ferreteria.Opciones_Admin
 
         private void botonRegistrar_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(campoCodigo.Text) ||
-                string.IsNullOrWhiteSpace(campoNombre.Text) ||
-                comboCategoria.SelectedIndex == -1 ||
-                string.IsNullOrWhiteSpace(campoPrecioCompra.Text) ||
-                string.IsNullOrWhiteSpace(campoStock.Text) ||
-                comboOrigen.SelectedIndex == -1)
+
+            if (string.IsNullOrWhiteSpace(campoCodigo.Text) || comboCategoria.SelectedIndex == -1)
             {
-                MessageBox.Show("Todos los campos de registro son obligatorios.", "Error",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Faltan campos obligatorios.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            if (!double.TryParse(campoPrecioCompra.Text, out double precioCompra) ||
-                !double.TryParse(campoPrecioVenta.Text, out double precioVenta) ||
-                !int.TryParse(campoStock.Text, out int stock))
+            double.TryParse(campoPrecioCompra.Text, out double pComp);
+            double.TryParse(campoPrecioVenta.Text, out double pVenta);
+            int.TryParse(campoStock.Text, out int stock);
+
+            bool exito = Conexion.RegistrarArticulo(
+                campoCodigo.Text,
+                campoNombre.Text,
+                comboCategoria.Text,
+                campoDescripcion.Text,
+                pComp,
+                pVenta,
+                stock,
+                comboOrigen.Text,
+                radioDestacadoSi.Checked ? "SI" : "NO",
+                radioOfertaSi.Checked ? "SI" : "NO",
+                fechaAlta.Value.Date
+            );
+
+            if (exito)
             {
-                MessageBox.Show("Datos numéricos inválidos.", "Error",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
+                MessageBox.Show("Registro realizado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                LimpiarCampos();
             }
+        }
 
-            try
+
+
+        private void CargarCombos()
+        {
+            DataTable dtCat = Conexion.VerListadoCategorias();
+            if (dtCat != null)
             {
-                using (MySqlConnection conn = new MySqlConnection("TU_CADENA_DE_CONEXION"))
-                {
-                    conn.Open();
-
-                    string query = @"INSERT INTO producto 
-                (codProducto, nombre, categoria, descripcion, precio_compra, precio_venta, stock, origen, destacado, oferta, fecha_alta) 
-                VALUES 
-                (@cod, @nom, @cat, @desc, @pComp, @pVenta, @stock, @orig, @dest, @ofer, @fecha)";
-
-                    MySqlCommand cmd = new MySqlCommand(query, conn);
-
-                    cmd.Parameters.AddWithValue("@cod", campoCodigo.Text);
-                    cmd.Parameters.AddWithValue("@nom", campoNombre.Text);
-                    cmd.Parameters.AddWithValue("@cat", comboCategoria.SelectedItem.ToString());
-                    cmd.Parameters.AddWithValue("@desc", campoDescripcion.Text);
-                    cmd.Parameters.AddWithValue("@pComp", precioCompra);
-                    cmd.Parameters.AddWithValue("@pVenta", precioVenta);
-                    cmd.Parameters.AddWithValue("@stock", stock);
-                    cmd.Parameters.AddWithValue("@orig", comboOrigen.SelectedItem.ToString());
-                 
-                    cmd.Parameters.AddWithValue("@dest", radioDestacadoSi.Checked ? "SI" : "NO");
-                    cmd.Parameters.AddWithValue("@ofer", radioOfertaSi.Checked ? "SI" : "NO");
-
-                    cmd.Parameters.AddWithValue("@fecha", fechaAlta.Value.Date);
-
-                    cmd.ExecuteNonQuery();
-
-                    MessageBox.Show("Registro realizado correctamente.", "Éxito",
-                        MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                    LimpiarCampos();
-                }
+                comboCategoria.DataSource = dtCat;
+                comboCategoria.DisplayMember = "Denominacion";
+                comboCategoria.ValueMember = "Denominacion";
+                comboCategoria.SelectedIndex = -1;
             }
-            catch (Exception ex)
+        
+            DataTable dtOri = Conexion.VerListadoOrigenes();
+            if (dtOri != null)
             {
-                MessageBox.Show("Error al registrar: " + ex.Message,
-                    "Error de Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                comboOrigen.DataSource = dtOri;
+                comboOrigen.DisplayMember = "Denominacion"; 
+                comboOrigen.ValueMember = "Denominacion";
+                comboOrigen.SelectedIndex = -1;
             }
         }
 

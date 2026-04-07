@@ -64,6 +64,7 @@
             this.botonRegistrar.TabIndex = 15;
             this.botonRegistrar.Text = "Registrar usuaio";
             this.botonRegistrar.UseVisualStyleBackColor = true;
+            this.botonRegistrar.Click += new System.EventHandler(this.botonRegistrar_Click);
             // 
             // botonLimpiar
             // 

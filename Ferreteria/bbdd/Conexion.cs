@@ -1,13 +1,18 @@
-﻿using System;
+﻿using Ferreteria.Modelos;
+using MySqlConnector;
+using Mysqlx;
+using Org.BouncyCastle.Pqc.Crypto.Lms;
+using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using MySqlConnector;
 
 namespace Ferreteria.bbdd
 {
@@ -231,6 +236,48 @@ namespace Ferreteria.bbdd
             finally { cerrar(); }
         }
 
+        public static bool ActualizarArticulos(string codigo, string nombre, string descripcion)
+        {
+            conectar();
+            try
+            {
+                // Solo actualizamos los dos campos permitidos
+                string sql = "UPDATE producto SET nombre = @nom, descripcion = @desc WHERE codProducto = @cod";
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+
+                cmd.Parameters.AddWithValue("@nom", nombre);
+                cmd.Parameters.AddWithValue("@desc", descripcion);
+                cmd.Parameters.AddWithValue("@cod", codigo);
+
+                int filas = cmd.ExecuteNonQuery();
+                return filas > 0;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al actualizar: " + ex.Message);
+                return false;
+            }
+            finally { cerrar(); }
+        }
+
+        public static bool EliminarProducto(string codigo)
+        {
+            conectar();
+            try
+            {
+                string sql = "DELETE FROM producto WHERE codProducto = @cod";
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("@cod", codigo);
+                int filas = cmd.ExecuteNonQuery();
+                return filas > 0;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Error al eliminar: " + e.Message);
+                return false;
+            }
+            finally { cerrar(); }
+        }
 
         public static DataTable VerListadoArticulosDestacados()
         {
@@ -495,6 +542,143 @@ namespace Ferreteria.bbdd
                 cerrar();
             }
         }
+
+        public static bool RegistrarArticulo(string cod, string nom, string cat, string desc,
+        double pComp, double pVenta, int stock, string orig, string dest, string ofer, DateTime fecha)
+        {
+            conectar();
+            try
+            {
+                string sql = @"INSERT INTO producto 
+            (codProducto, nombre, categoria, descripcion, precio_compra, precio_venta, stock, 
+            origen, destacado, oferta, fecha_alta) 
+            VALUES (@cod, @nom, @cat, @desc, @pComp, @pVenta, @stock, @orig, @dest, @ofer, @fecha)";
+
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("@cod", cod);
+                cmd.Parameters.AddWithValue("@nom", nom);
+                cmd.Parameters.AddWithValue("@cat", cat);
+                cmd.Parameters.AddWithValue("@desc", desc);
+                cmd.Parameters.AddWithValue("@pComp", pComp);
+                cmd.Parameters.AddWithValue("@pVenta", pVenta);
+                cmd.Parameters.AddWithValue("@stock", stock);
+                cmd.Parameters.AddWithValue("@orig", orig);
+                cmd.Parameters.AddWithValue("@dest", dest);
+                cmd.Parameters.AddWithValue("@ofer", ofer);
+                cmd.Parameters.AddWithValue("@fecha", fecha);
+
+                int filas = cmd.ExecuteNonQuery();
+                return filas > 0;
+            }
+            catch (MySqlException e)
+            {
+                MessageBox.Show("Error al registrar el artículo.\n" + e.Message);
+                return false;
+            }
+            finally
+            {
+                cerrar();
+            }
+        }
+
+        public static bool ExisteUsuario(string usuario)
+        {
+            conectar();
+            try
+            {
+                string sql = "SELECT COUNT(*) FROM usuarios WHERE usuario = @u";
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("@u", usuario);
+                return Convert.ToInt32(cmd.ExecuteScalar()) > 0;
+            }
+            catch { return false; }
+            finally { cerrar(); }
+        }
+
+        public static bool RegistrarUsuario(string nombre, string tienda, string usuario,
+        string pass, string tipo, string estado, DateTime fecha)
+        {
+            conectar();
+            try
+            {
+                string sql = "INSERT INTO usuarios (nombre_apellidos, tienda, usuario, pass, tipo, estado, fecha_alta) " +
+                             "VALUES (@nom, @tienda, @user, @pass, @tipo, @est, @fecha)";
+
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("@nom", nombre);
+                cmd.Parameters.AddWithValue("@tienda", tienda);
+                cmd.Parameters.AddWithValue("@user", usuario);
+                cmd.Parameters.AddWithValue("@pass", pass);
+                cmd.Parameters.AddWithValue("@tipo", tipo);
+                cmd.Parameters.AddWithValue("@est", estado);
+                cmd.Parameters.AddWithValue("@fecha", fecha);
+
+                int filas = cmd.ExecuteNonQuery();
+                return filas > 0;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Error al registrar en DB: " + e.Message);
+                return false;
+            }
+            finally { cerrar(); }
+        }
+
+        public static DataTable ObtenerDatosUsuario(string usuario)
+        {
+            conectar();
+            try
+            {
+                string sql = "SELECT nombre_apellidos, usuario, tipo, estado FROM usuarios WHERE usuario = @u";
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("@u", usuario);
+                MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                return dt;
+            }
+            catch { return null; }
+            finally { cerrar(); }
+        }
+
+        public static bool ActualizarPerfil(string usuario, string nombre, string nuevaPass)
+        {
+            conectar();
+            try
+            {
+                string sql;
+                // Limpiamos espacios en blanco del usuario por si acaso
+                string usuarioLimpio = usuario.Trim();
+
+                if (string.IsNullOrEmpty(nuevaPass))
+                    sql = "UPDATE usuarios SET nombre_apellidos = @nom WHERE TRIM(usuario) = @u";
+                else
+                    sql = "UPDATE usuarios SET nombre_apellidos = @nom, pass = @pass WHERE TRIM(usuario) = @u";
+
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("@nom", nombre.Trim());
+                cmd.Parameters.AddWithValue("@u", usuarioLimpio);
+
+                if (!string.IsNullOrEmpty(nuevaPass))
+                    cmd.Parameters.AddWithValue("@pass", nuevaPass.Trim());
+
+                int filas = cmd.ExecuteNonQuery();
+
+                if (filas == 0)
+                {
+                    // Este mensaje te dirá exactamente qué nombre está buscando la App
+                    MessageBox.Show("Base de datos conectada, pero no existe el usuario: '" + usuarioLimpio + "'");
+                }
+
+                return filas > 0;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Error técnico: " + e.Message);
+                return false;
+            }
+            finally { cerrar(); }
+        }
     }
-}
+ }
 
