@@ -366,7 +366,7 @@ namespace Ferreteria.Opciones_Admin
             // 
             // botonCancelar
             // 
-            this.botonCancelar.Location = new System.Drawing.Point(426, 733);
+            this.botonCancelar.Location = new System.Drawing.Point(274, 733);
             this.botonCancelar.Name = "botonCancelar";
             this.botonCancelar.Size = new System.Drawing.Size(75, 23);
             this.botonCancelar.TabIndex = 5;
@@ -376,7 +376,7 @@ namespace Ferreteria.Opciones_Admin
             // 
             // botonLimpiar
             // 
-            this.botonLimpiar.Location = new System.Drawing.Point(328, 733);
+            this.botonLimpiar.Location = new System.Drawing.Point(156, 733);
             this.botonLimpiar.Name = "botonLimpiar";
             this.botonLimpiar.Size = new System.Drawing.Size(75, 23);
             this.botonLimpiar.TabIndex = 6;
@@ -386,7 +386,7 @@ namespace Ferreteria.Opciones_Admin
             // 
             // botonRegistrar
             // 
-            this.botonRegistrar.Location = new System.Drawing.Point(518, 733);
+            this.botonRegistrar.Location = new System.Drawing.Point(372, 733);
             this.botonRegistrar.Name = "botonRegistrar";
             this.botonRegistrar.Size = new System.Drawing.Size(122, 23);
             this.botonRegistrar.TabIndex = 7;

@@ -93,6 +93,17 @@ namespace Ferreteria.Opciones_User
         {
 
         }
+
+        private void BotonLimpiar_Click(object sender, EventArgs e)
+        {
+            LimpiarDetalle();
+        }
+
+        private void BotonCerrar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+
+        }
     }
 }
 

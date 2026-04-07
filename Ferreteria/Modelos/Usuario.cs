@@ -10,5 +10,8 @@ namespace Ferreteria.Modelos
     {
         public static string UsuarioLogado { get; set; }
         public static string TipoUsuario { get; set; }
+
+        
+
     }
 }

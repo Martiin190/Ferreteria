@@ -171,6 +171,7 @@
             this.campoContrasenya.Name = "campoContrasenya";
             this.campoContrasenya.Size = new System.Drawing.Size(236, 22);
             this.campoContrasenya.TabIndex = 8;
+            this.campoContrasenya.TextChanged += new System.EventHandler(this.campoContrasenya_TextChanged);
             // 
             // campoUsuario
             // 
@@ -203,6 +204,7 @@
             this.fechaAlta.Name = "fechaAlta";
             this.fechaAlta.Size = new System.Drawing.Size(250, 22);
             this.fechaAlta.TabIndex = 6;
+            this.fechaAlta.Value = new System.DateTime(2026, 4, 7, 8, 39, 29, 0);
             // 
             // groupBox1
             // 
@@ -241,6 +243,7 @@
             this.campoNombreYApellidos.Name = "campoNombreYApellidos";
             this.campoNombreYApellidos.Size = new System.Drawing.Size(236, 22);
             this.campoNombreYApellidos.TabIndex = 0;
+            this.campoNombreYApellidos.TextChanged += new System.EventHandler(this.campoNombreYApellidos_TextChanged);
             // 
             // panel1
             // 

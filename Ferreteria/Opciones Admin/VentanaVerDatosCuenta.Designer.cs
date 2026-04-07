@@ -30,27 +30,34 @@
         {
             this.botonGuardar = new System.Windows.Forms.Button();
             this.botonCancelar = new System.Windows.Forms.Button();
-            this.panelCambiarContrasenya = new System.Windows.Forms.GroupBox();
-            this.campoConfirmarContrasenya = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.campoNuevaContrasenya = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.campoNombreYApellidos = new System.Windows.Forms.TextBox();
-            this.campoNombre = new System.Windows.Forms.Label();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.comboTipo = new System.Windows.Forms.ComboBox();
-            this.comboEstado = new System.Windows.Forms.ComboBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.fechaAlta = new System.Windows.Forms.DateTimePicker();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.campoUsuario = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label12 = new System.Windows.Forms.Label();
-            this.panelCambiarContrasenya.SuspendLayout();
-            this.groupBox1.SuspendLayout();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.CampoConCon = new System.Windows.Forms.TextBox();
+            this.CampoConNueva = new System.Windows.Forms.TextBox();
+            this.CampoCon = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.CampoUsuario = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.CampoNombre = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.CampoFecha = new System.Windows.Forms.TextBox();
+            this.CampoEstado = new System.Windows.Forms.TextBox();
+            this.CampoTipo = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
+            this.panel3.SuspendLayout();
+            this.panel2.SuspendLayout();
+            this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // botonGuardar
@@ -73,152 +80,6 @@
             this.botonCancelar.UseVisualStyleBackColor = true;
             this.botonCancelar.Click += new System.EventHandler(this.botonCancelar_Click);
             // 
-            // panelCambiarContrasenya
-            // 
-            this.panelCambiarContrasenya.Controls.Add(this.campoConfirmarContrasenya);
-            this.panelCambiarContrasenya.Controls.Add(this.label7);
-            this.panelCambiarContrasenya.Controls.Add(this.campoNuevaContrasenya);
-            this.panelCambiarContrasenya.Controls.Add(this.label6);
-            this.panelCambiarContrasenya.Controls.Add(this.campoNombreYApellidos);
-            this.panelCambiarContrasenya.Controls.Add(this.campoNombre);
-            this.panelCambiarContrasenya.Location = new System.Drawing.Point(42, 310);
-            this.panelCambiarContrasenya.Name = "panelCambiarContrasenya";
-            this.panelCambiarContrasenya.Size = new System.Drawing.Size(603, 137);
-            this.panelCambiarContrasenya.TabIndex = 19;
-            this.panelCambiarContrasenya.TabStop = false;
-            this.panelCambiarContrasenya.Text = "DATOS EDITABLES";
-            // 
-            // campoConfirmarContrasenya
-            // 
-            this.campoConfirmarContrasenya.Location = new System.Drawing.Point(401, 53);
-            this.campoConfirmarContrasenya.Name = "campoConfirmarContrasenya";
-            this.campoConfirmarContrasenya.Size = new System.Drawing.Size(122, 22);
-            this.campoConfirmarContrasenya.TabIndex = 18;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(398, 34);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(134, 16);
-            this.label7.TabIndex = 17;
-            this.label7.Text = "Confirmar contraseña";
-            // 
-            // campoNuevaContrasenya
-            // 
-            this.campoNuevaContrasenya.Location = new System.Drawing.Point(223, 53);
-            this.campoNuevaContrasenya.Name = "campoNuevaContrasenya";
-            this.campoNuevaContrasenya.Size = new System.Drawing.Size(122, 22);
-            this.campoNuevaContrasenya.TabIndex = 16;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(220, 34);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(117, 16);
-            this.label6.TabIndex = 15;
-            this.label6.Text = "Nueva contraseña";
-            // 
-            // campoNombreYApellidos
-            // 
-            this.campoNombreYApellidos.Location = new System.Drawing.Point(35, 53);
-            this.campoNombreYApellidos.Name = "campoNombreYApellidos";
-            this.campoNombreYApellidos.Size = new System.Drawing.Size(122, 22);
-            this.campoNombreYApellidos.TabIndex = 11;
-            // 
-            // campoNombre
-            // 
-            this.campoNombre.AutoSize = true;
-            this.campoNombre.Location = new System.Drawing.Point(32, 34);
-            this.campoNombre.Name = "campoNombre";
-            this.campoNombre.Size = new System.Drawing.Size(56, 16);
-            this.campoNombre.TabIndex = 0;
-            this.campoNombre.Text = "Nombre";
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.comboTipo);
-            this.groupBox1.Controls.Add(this.comboEstado);
-            this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.fechaAlta);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.campoUsuario);
-            this.groupBox1.Location = new System.Drawing.Point(42, 107);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(603, 181);
-            this.groupBox1.TabIndex = 17;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "DATOS DE SOLO LECTURA";
-            // 
-            // comboTipo
-            // 
-            this.comboTipo.FormattingEnabled = true;
-            this.comboTipo.Location = new System.Drawing.Point(335, 50);
-            this.comboTipo.Name = "comboTipo";
-            this.comboTipo.Size = new System.Drawing.Size(188, 24);
-            this.comboTipo.TabIndex = 10;
-            // 
-            // comboEstado
-            // 
-            this.comboEstado.FormattingEnabled = true;
-            this.comboEstado.Location = new System.Drawing.Point(32, 132);
-            this.comboEstado.Name = "comboEstado";
-            this.comboEstado.Size = new System.Drawing.Size(188, 24);
-            this.comboEstado.TabIndex = 9;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(332, 101);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(89, 16);
-            this.label4.TabIndex = 8;
-            this.label4.Text = "Fecha de alta";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(32, 101);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(50, 16);
-            this.label3.TabIndex = 7;
-            this.label3.Text = "Estado";
-            // 
-            // fechaAlta
-            // 
-            this.fechaAlta.Location = new System.Drawing.Point(335, 132);
-            this.fechaAlta.Name = "fechaAlta";
-            this.fechaAlta.Size = new System.Drawing.Size(250, 22);
-            this.fechaAlta.TabIndex = 6;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(332, 21);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(35, 16);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "Tipo";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(32, 22);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(54, 16);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "Usuario";
-            // 
-            // campoUsuario
-            // 
-            this.campoUsuario.Location = new System.Drawing.Point(32, 52);
-            this.campoUsuario.Name = "campoUsuario";
-            this.campoUsuario.Size = new System.Drawing.Size(236, 22);
-            this.campoUsuario.TabIndex = 0;
-            // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.AppWorkspace;
@@ -238,25 +99,225 @@
             this.label12.TabIndex = 0;
             this.label12.Text = "Datos de la Cuenta";
             // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.label7);
+            this.panel3.Controls.Add(this.label6);
+            this.panel3.Controls.Add(this.label5);
+            this.panel3.Controls.Add(this.CampoConCon);
+            this.panel3.Controls.Add(this.CampoConNueva);
+            this.panel3.Controls.Add(this.CampoCon);
+            this.panel3.Controls.Add(this.label2);
+            this.panel3.Location = new System.Drawing.Point(377, 177);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(309, 188);
+            this.panel3.TabIndex = 24;
+            this.panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(6, 124);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(134, 16);
+            this.label7.TabIndex = 11;
+            this.label7.Text = "Confirmar contrasena";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(6, 87);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(119, 16);
+            this.label6.TabIndex = 10;
+            this.label6.Text = "Nueva Contrasena";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(6, 47);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(115, 16);
+            this.label5.TabIndex = 9;
+            this.label5.Text = "Contrasena actual";
+            // 
+            // CampoConCon
+            // 
+            this.CampoConCon.Location = new System.Drawing.Point(146, 121);
+            this.CampoConCon.Name = "CampoConCon";
+            this.CampoConCon.Size = new System.Drawing.Size(127, 22);
+            this.CampoConCon.TabIndex = 8;
+            // 
+            // CampoConNueva
+            // 
+            this.CampoConNueva.Location = new System.Drawing.Point(146, 84);
+            this.CampoConNueva.Name = "CampoConNueva";
+            this.CampoConNueva.Size = new System.Drawing.Size(127, 22);
+            this.CampoConNueva.TabIndex = 7;
+            // 
+            // CampoCon
+            // 
+            this.CampoCon.Location = new System.Drawing.Point(146, 41);
+            this.CampoCon.Name = "CampoCon";
+            this.CampoCon.Size = new System.Drawing.Size(127, 22);
+            this.CampoCon.TabIndex = 6;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(3, 10);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(87, 16);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "SEGURIDAD";
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.CampoUsuario);
+            this.panel2.Controls.Add(this.label9);
+            this.panel2.Controls.Add(this.CampoNombre);
+            this.panel2.Controls.Add(this.label8);
+            this.panel2.Controls.Add(this.label3);
+            this.panel2.Location = new System.Drawing.Point(8, 119);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(343, 111);
+            this.panel2.TabIndex = 23;
+            // 
+            // CampoUsuario
+            // 
+            this.CampoUsuario.Location = new System.Drawing.Point(139, 65);
+            this.CampoUsuario.Name = "CampoUsuario";
+            this.CampoUsuario.Size = new System.Drawing.Size(173, 22);
+            this.CampoUsuario.TabIndex = 14;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(7, 68);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(54, 16);
+            this.label9.TabIndex = 13;
+            this.label9.Text = "Usuario";
+            // 
+            // CampoNombre
+            // 
+            this.CampoNombre.Location = new System.Drawing.Point(139, 28);
+            this.CampoNombre.Name = "CampoNombre";
+            this.CampoNombre.Size = new System.Drawing.Size(173, 22);
+            this.CampoNombre.TabIndex = 12;
+            this.CampoNombre.TextChanged += new System.EventHandler(this.CampoNombre_TextChanged);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(7, 31);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(126, 16);
+            this.label8.TabIndex = 12;
+            this.label8.Text = "Nombre y Apellidos";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(4, 4);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(148, 16);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "DATOS PERSONALES";
+            // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.CampoFecha);
+            this.panel4.Controls.Add(this.CampoEstado);
+            this.panel4.Controls.Add(this.CampoTipo);
+            this.panel4.Controls.Add(this.label1);
+            this.panel4.Controls.Add(this.label11);
+            this.panel4.Controls.Add(this.label10);
+            this.panel4.Controls.Add(this.label4);
+            this.panel4.Location = new System.Drawing.Point(12, 247);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(343, 187);
+            this.panel4.TabIndex = 12;
+            // 
+            // CampoFecha
+            // 
+            this.CampoFecha.Location = new System.Drawing.Point(96, 120);
+            this.CampoFecha.Name = "CampoFecha";
+            this.CampoFecha.Size = new System.Drawing.Size(127, 22);
+            this.CampoFecha.TabIndex = 19;
+            // 
+            // CampoEstado
+            // 
+            this.CampoEstado.Location = new System.Drawing.Point(96, 74);
+            this.CampoEstado.Name = "CampoEstado";
+            this.CampoEstado.Size = new System.Drawing.Size(127, 22);
+            this.CampoEstado.TabIndex = 18;
+            // 
+            // CampoTipo
+            // 
+            this.CampoTipo.Location = new System.Drawing.Point(96, 29);
+            this.CampoTipo.Name = "CampoTipo";
+            this.CampoTipo.Size = new System.Drawing.Size(127, 22);
+            this.CampoTipo.TabIndex = 12;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(4, 126);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(71, 16);
+            this.label1.TabIndex = 17;
+            this.label1.Text = "Fecha Alta";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(7, 77);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(50, 16);
+            this.label11.TabIndex = 16;
+            this.label11.Text = "Estado";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(7, 32);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(35, 16);
+            this.label10.TabIndex = 15;
+            this.label10.Text = "Tipo";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(7, 4);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(200, 16);
+            this.label4.TabIndex = 0;
+            this.label4.Text = "INFORMACION DE LA CUENTA";
+            // 
             // VentanaVerDatosCuenta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(694, 484);
+            this.Controls.Add(this.panel4);
+            this.Controls.Add(this.panel3);
+            this.Controls.Add(this.panel2);
             this.Controls.Add(this.botonGuardar);
             this.Controls.Add(this.botonCancelar);
-            this.Controls.Add(this.panelCambiarContrasenya);
-            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.panel1);
             this.Name = "VentanaVerDatosCuenta";
             this.Text = "VentanaVerDatosCuenta";
-            this.panelCambiarContrasenya.ResumeLayout(false);
-            this.panelCambiarContrasenya.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -265,23 +326,29 @@
 
         private System.Windows.Forms.Button botonGuardar;
         private System.Windows.Forms.Button botonCancelar;
-        private System.Windows.Forms.GroupBox panelCambiarContrasenya;
-        private System.Windows.Forms.Label campoNombre;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.DateTimePicker fechaAlta;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox campoUsuario;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.TextBox campoNombreYApellidos;
-        private System.Windows.Forms.ComboBox comboTipo;
-        private System.Windows.Forms.ComboBox comboEstado;
-        private System.Windows.Forms.TextBox campoConfirmarContrasenya;
+        private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox campoNuevaContrasenya;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox CampoConCon;
+        private System.Windows.Forms.TextBox CampoConNueva;
+        private System.Windows.Forms.TextBox CampoCon;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.TextBox CampoUsuario;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox CampoNombre;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.TextBox CampoFecha;
+        private System.Windows.Forms.TextBox CampoEstado;
+        private System.Windows.Forms.TextBox CampoTipo;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label4;
     }
 }

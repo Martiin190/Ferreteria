@@ -96,5 +96,15 @@ namespace Ferreteria.Opciones_Admin
                 LimpiarCampos();
             }
         }
+
+        private void campoContrasenya_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void campoNombreYApellidos_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

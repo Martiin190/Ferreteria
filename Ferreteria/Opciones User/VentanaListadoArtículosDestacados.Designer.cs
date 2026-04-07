@@ -54,6 +54,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.BotonLimpiar = new System.Windows.Forms.Button();
+            this.BotonCerrar = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -308,12 +310,36 @@
             this.dataGridView1.TabIndex = 6;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
+            // BotonLimpiar
+            // 
+            this.BotonLimpiar.AccessibleName = "BotonLimpiar";
+            this.BotonLimpiar.Location = new System.Drawing.Point(242, 817);
+            this.BotonLimpiar.Name = "BotonLimpiar";
+            this.BotonLimpiar.Size = new System.Drawing.Size(144, 23);
+            this.BotonLimpiar.TabIndex = 10;
+            this.BotonLimpiar.Text = "Limpiar";
+            this.BotonLimpiar.UseVisualStyleBackColor = true;
+            this.BotonLimpiar.Click += new System.EventHandler(this.BotonLimpiar_Click);
+            // 
+            // BotonCerrar
+            // 
+            this.BotonCerrar.AccessibleName = "BotonCerrar";
+            this.BotonCerrar.Location = new System.Drawing.Point(406, 817);
+            this.BotonCerrar.Name = "BotonCerrar";
+            this.BotonCerrar.Size = new System.Drawing.Size(165, 23);
+            this.BotonCerrar.TabIndex = 11;
+            this.BotonCerrar.Text = "Cerrar";
+            this.BotonCerrar.UseVisualStyleBackColor = true;
+            this.BotonCerrar.Click += new System.EventHandler(this.BotonCerrar_Click);
+            // 
             // VentanaListadoArtículosDestacados
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(800, 790);
+            this.ClientSize = new System.Drawing.Size(800, 894);
+            this.Controls.Add(this.BotonCerrar);
+            this.Controls.Add(this.BotonLimpiar);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.panel1);
@@ -358,5 +384,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Button BotonLimpiar;
+        private System.Windows.Forms.Button BotonCerrar;
     }
 }
