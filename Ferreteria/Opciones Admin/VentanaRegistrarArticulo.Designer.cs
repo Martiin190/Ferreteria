@@ -57,22 +57,22 @@ namespace Ferreteria.Opciones_Admin
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.grupoOfertas = new System.Windows.Forms.GroupBox();
             this.radioOfertaNo = new System.Windows.Forms.RadioButton();
             this.radioOfertaSi = new System.Windows.Forms.RadioButton();
-            this.radioDestacadoNo = new System.Windows.Forms.RadioButton();
+            this.grupoDestacados = new System.Windows.Forms.GroupBox();
             this.radioDestacadoSi = new System.Windows.Forms.RadioButton();
+            this.radioDestacadoNo = new System.Windows.Forms.RadioButton();
             this.botonCancelar = new System.Windows.Forms.Button();
             this.botonLimpiar = new System.Windows.Forms.Button();
             this.botonRegistrar = new System.Windows.Forms.Button();
-            this.grupoDestacados = new System.Windows.Forms.GroupBox();
-            this.grupoOfertas = new System.Windows.Forms.GroupBox();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
-            this.grupoDestacados.SuspendLayout();
             this.grupoOfertas.SuspendLayout();
+            this.grupoDestacados.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -298,6 +298,17 @@ namespace Ferreteria.Opciones_Admin
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "ESTADO";
             // 
+            // grupoOfertas
+            // 
+            this.grupoOfertas.Controls.Add(this.radioOfertaNo);
+            this.grupoOfertas.Controls.Add(this.radioOfertaSi);
+            this.grupoOfertas.Location = new System.Drawing.Point(397, 21);
+            this.grupoOfertas.Name = "grupoOfertas";
+            this.grupoOfertas.Size = new System.Drawing.Size(132, 72);
+            this.grupoOfertas.TabIndex = 7;
+            this.grupoOfertas.TabStop = false;
+            this.grupoOfertas.Text = "Ofertas";
+            // 
             // radioOfertaNo
             // 
             this.radioOfertaNo.AutoSize = true;
@@ -320,16 +331,16 @@ namespace Ferreteria.Opciones_Admin
             this.radioOfertaSi.Text = "Si";
             this.radioOfertaSi.UseVisualStyleBackColor = true;
             // 
-            // radioDestacadoNo
+            // grupoDestacados
             // 
-            this.radioDestacadoNo.AutoSize = true;
-            this.radioDestacadoNo.Location = new System.Drawing.Point(70, 42);
-            this.radioDestacadoNo.Name = "radioDestacadoNo";
-            this.radioDestacadoNo.Size = new System.Drawing.Size(46, 20);
-            this.radioDestacadoNo.TabIndex = 3;
-            this.radioDestacadoNo.TabStop = true;
-            this.radioDestacadoNo.Text = "No";
-            this.radioDestacadoNo.UseVisualStyleBackColor = true;
+            this.grupoDestacados.Controls.Add(this.radioDestacadoSi);
+            this.grupoDestacados.Controls.Add(this.radioDestacadoNo);
+            this.grupoDestacados.Location = new System.Drawing.Point(78, 21);
+            this.grupoDestacados.Name = "grupoDestacados";
+            this.grupoDestacados.Size = new System.Drawing.Size(132, 71);
+            this.grupoDestacados.TabIndex = 6;
+            this.grupoDestacados.TabStop = false;
+            this.grupoDestacados.Text = "Destacados";
             // 
             // radioDestacadoSi
             // 
@@ -341,6 +352,17 @@ namespace Ferreteria.Opciones_Admin
             this.radioDestacadoSi.TabStop = true;
             this.radioDestacadoSi.Text = "Si";
             this.radioDestacadoSi.UseVisualStyleBackColor = true;
+            // 
+            // radioDestacadoNo
+            // 
+            this.radioDestacadoNo.AutoSize = true;
+            this.radioDestacadoNo.Location = new System.Drawing.Point(70, 42);
+            this.radioDestacadoNo.Name = "radioDestacadoNo";
+            this.radioDestacadoNo.Size = new System.Drawing.Size(46, 20);
+            this.radioDestacadoNo.TabIndex = 3;
+            this.radioDestacadoNo.TabStop = true;
+            this.radioDestacadoNo.Text = "No";
+            this.radioDestacadoNo.UseVisualStyleBackColor = true;
             // 
             // botonCancelar
             // 
@@ -372,28 +394,6 @@ namespace Ferreteria.Opciones_Admin
             this.botonRegistrar.UseVisualStyleBackColor = true;
             this.botonRegistrar.Click += new System.EventHandler(this.botonRegistrar_Click);
             // 
-            // grupoDestacados
-            // 
-            this.grupoDestacados.Controls.Add(this.radioDestacadoSi);
-            this.grupoDestacados.Controls.Add(this.radioDestacadoNo);
-            this.grupoDestacados.Location = new System.Drawing.Point(78, 21);
-            this.grupoDestacados.Name = "grupoDestacados";
-            this.grupoDestacados.Size = new System.Drawing.Size(132, 71);
-            this.grupoDestacados.TabIndex = 6;
-            this.grupoDestacados.TabStop = false;
-            this.grupoDestacados.Text = "Destacados";
-            // 
-            // grupoOfertas
-            // 
-            this.grupoOfertas.Controls.Add(this.radioOfertaNo);
-            this.grupoOfertas.Controls.Add(this.radioOfertaSi);
-            this.grupoOfertas.Location = new System.Drawing.Point(397, 21);
-            this.grupoOfertas.Name = "grupoOfertas";
-            this.grupoOfertas.Size = new System.Drawing.Size(132, 72);
-            this.grupoOfertas.TabIndex = 7;
-            this.grupoOfertas.TabStop = false;
-            this.grupoOfertas.Text = "Ofertas";
-            // 
             // VentanaRegistrarArticulo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -409,6 +409,7 @@ namespace Ferreteria.Opciones_Admin
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.panel1);
             this.Name = "VentanaRegistrarArticulo";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "VentanaRegistrarArticulo";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -419,10 +420,10 @@ namespace Ferreteria.Opciones_Admin
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.groupBox4.ResumeLayout(false);
-            this.grupoDestacados.ResumeLayout(false);
-            this.grupoDestacados.PerformLayout();
             this.grupoOfertas.ResumeLayout(false);
             this.grupoOfertas.PerformLayout();
+            this.grupoDestacados.ResumeLayout(false);
+            this.grupoDestacados.PerformLayout();
             this.ResumeLayout(false);
 
         }

@@ -64,7 +64,7 @@
             this.panel3.Controls.Add(this.comboOferta);
             this.panel3.Location = new System.Drawing.Point(13, 72);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(353, 495);
+            this.panel3.Size = new System.Drawing.Size(568, 495);
             this.panel3.TabIndex = 24;
             // 
             // articulos
@@ -74,7 +74,7 @@
             this.articulos.Name = "articulos";
             this.articulos.RowHeadersWidth = 51;
             this.articulos.RowTemplate.Height = 24;
-            this.articulos.Size = new System.Drawing.Size(338, 406);
+            this.articulos.Size = new System.Drawing.Size(558, 406);
             this.articulos.TabIndex = 21;
             // 
             // comboOferta
@@ -105,7 +105,7 @@
             this.panelDatos.Controls.Add(this.nombre);
             this.panelDatos.Controls.Add(this.categoria);
             this.panelDatos.Controls.Add(this.campoCodigo);
-            this.panelDatos.Location = new System.Drawing.Point(372, 72);
+            this.panelDatos.Location = new System.Drawing.Point(587, 72);
             this.panelDatos.Name = "panelDatos";
             this.panelDatos.Size = new System.Drawing.Size(305, 495);
             this.panelDatos.TabIndex = 23;
@@ -279,7 +279,7 @@
             this.panel1.Controls.Add(this.label12);
             this.panel1.Location = new System.Drawing.Point(1, 1);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(689, 65);
+            this.panel1.Size = new System.Drawing.Size(904, 65);
             this.panel1.TabIndex = 22;
             // 
             // label12
@@ -297,11 +297,12 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(691, 574);
+            this.ClientSize = new System.Drawing.Size(904, 574);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panelDatos);
             this.Controls.Add(this.panel1);
             this.Name = "VentanaVerListadoArticulosOferta";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "VentanaVerListadoArticulosOferta";
             this.panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.articulos)).EndInit();

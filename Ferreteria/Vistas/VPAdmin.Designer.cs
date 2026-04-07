@@ -42,7 +42,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(82, 81);
+            this.button1.Location = new System.Drawing.Point(52, 78);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(185, 55);
             this.button1.TabIndex = 0;
@@ -52,7 +52,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(298, 81);
+            this.button2.Location = new System.Drawing.Point(268, 78);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(185, 55);
             this.button2.TabIndex = 1;
@@ -62,7 +62,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(509, 81);
+            this.button3.Location = new System.Drawing.Point(479, 78);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(185, 55);
             this.button3.TabIndex = 2;
@@ -72,7 +72,7 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(731, 81);
+            this.button4.Location = new System.Drawing.Point(701, 78);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(185, 55);
             this.button4.TabIndex = 3;
@@ -82,7 +82,7 @@
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(948, 81);
+            this.button5.Location = new System.Drawing.Point(918, 78);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(185, 55);
             this.button5.TabIndex = 4;
@@ -92,7 +92,7 @@
             // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(82, 184);
+            this.button6.Location = new System.Drawing.Point(52, 181);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(185, 55);
             this.button6.TabIndex = 5;
@@ -102,7 +102,7 @@
             // 
             // button7
             // 
-            this.button7.Location = new System.Drawing.Point(298, 184);
+            this.button7.Location = new System.Drawing.Point(268, 181);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(185, 55);
             this.button7.TabIndex = 6;
@@ -112,7 +112,7 @@
             // 
             // button8
             // 
-            this.button8.Location = new System.Drawing.Point(509, 184);
+            this.button8.Location = new System.Drawing.Point(479, 181);
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(185, 55);
             this.button8.TabIndex = 7;
@@ -122,7 +122,7 @@
             // 
             // button9
             // 
-            this.button9.Location = new System.Drawing.Point(731, 188);
+            this.button9.Location = new System.Drawing.Point(701, 185);
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(185, 55);
             this.button9.TabIndex = 8;
@@ -132,7 +132,7 @@
             // 
             // button10
             // 
-            this.button10.Location = new System.Drawing.Point(948, 184);
+            this.button10.Location = new System.Drawing.Point(918, 181);
             this.button10.Name = "button10";
             this.button10.Size = new System.Drawing.Size(185, 55);
             this.button10.TabIndex = 9;
@@ -157,6 +157,7 @@
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Name = "VPAdmin";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "VPAdmin";
             this.Load += new System.EventHandler(this.VPAdmin_Load);
             this.ResumeLayout(false);

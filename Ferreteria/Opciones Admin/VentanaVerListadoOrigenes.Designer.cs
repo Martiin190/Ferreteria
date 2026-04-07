@@ -52,7 +52,7 @@
             this.panel3.Controls.Add(this.comboOrigen);
             this.panel3.Location = new System.Drawing.Point(9, 76);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(353, 493);
+            this.panel3.Size = new System.Drawing.Size(510, 493);
             this.panel3.TabIndex = 30;
             // 
             // articulos
@@ -62,7 +62,7 @@
             this.articulos.Name = "articulos";
             this.articulos.RowHeadersWidth = 51;
             this.articulos.RowTemplate.Height = 24;
-            this.articulos.Size = new System.Drawing.Size(338, 406);
+            this.articulos.Size = new System.Drawing.Size(500, 406);
             this.articulos.TabIndex = 21;
             // 
             // comboOrigen
@@ -81,7 +81,7 @@
             this.panelDatos.Controls.Add(this.limpiar);
             this.panelDatos.Controls.Add(this.descripcion);
             this.panelDatos.Controls.Add(this.denominacion);
-            this.panelDatos.Location = new System.Drawing.Point(368, 76);
+            this.panelDatos.Location = new System.Drawing.Point(525, 76);
             this.panelDatos.Name = "panelDatos";
             this.panelDatos.Size = new System.Drawing.Size(305, 493);
             this.panelDatos.TabIndex = 29;
@@ -147,7 +147,7 @@
             this.panel1.Controls.Add(this.label12);
             this.panel1.Location = new System.Drawing.Point(-3, 5);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(689, 65);
+            this.panel1.Size = new System.Drawing.Size(848, 65);
             this.panel1.TabIndex = 28;
             // 
             // label12
@@ -165,11 +165,12 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(682, 575);
+            this.ClientSize = new System.Drawing.Size(842, 575);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panelDatos);
             this.Controls.Add(this.panel1);
             this.Name = "VentanaVerListadoOrigenes";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "VentanaVerListadoOrigenes";
             this.panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.articulos)).EndInit();

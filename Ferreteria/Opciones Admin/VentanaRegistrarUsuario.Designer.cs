@@ -274,6 +274,7 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.panel1);
             this.Name = "VentanaRegistrarUsuario";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "F";
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
