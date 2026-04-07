@@ -17,74 +17,40 @@ namespace Ferreteria.Opciones_Admin
         public VentanaVerListadoCategorias()
         {
             InitializeComponent();
-            this.Load += VentanaVerListadoCategorias_Load;
-            this.articulos.SelectionChanged += articulos_SelectionChanged;
-            ConfiguracionInicial();
-        }
-        private void VentanaVerListadoCategorias_Load(object sender, EventArgs e)
-        {
             CargarCategorias();
-        }
 
-        private void ConfiguracionInicial()
-        {
-            panelDatos.Visible = false;
-            articulos.ReadOnly = true;
-            articulos.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            articulos.MultiSelect = false;
-            articulos.AllowUserToAddRows = false;
-            articulos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-
-            this.FormBorderStyle = FormBorderStyle.FixedDialog;
-            this.StartPosition = FormStartPosition.CenterScreen;
-            this.MaximizeBox = false;
         }
 
         private void CargarCategorias()
         {
-            DataTable dt = Conexion.VerListadoCategorias();
+            string sql = "SELECT categoria, descripcion FROM categorias";
+            dataGridView1.DataSource = Conexion.GetTabla(sql);
 
-            if (dt != null)
-                articulos.DataSource = dt;
+            dataGridView1.ReadOnly = true;
+            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridView1.MultiSelect = false;
+            dataGridView1.AllowUserToAddRows = false;
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
-            comboCategoria.DataSource = new DataTable(); // limpia primero para evitar conflicto
-            comboCategoria.DataSource = dt;
-            comboCategoria.DisplayMember = "Denominacion";
-            comboCategoria.ValueMember = "Denominacion";
-            comboCategoria.SelectedIndex = -1;
+            dataGridView1.Columns["categoria"].HeaderText = "Categoría";
+            dataGridView1.Columns["descripcion"].HeaderText = "Descripción";
         }
+
+        private void VentanaVerListadoCategorias_Load(object sender, EventArgs e)
+        {
+            
+        }
+
+        
+
+        
 
         private void articulos_SelectionChanged(object sender, EventArgs e)
         {
-            if (articulos.SelectedRows.Count > 0)
-            {
-                DataRow fila = ((DataRowView)articulos.SelectedRows[0].DataBoundItem).Row;
-
-                denominacion.Text = fila["Denominacion"].ToString();
-                descripcion.Text = fila["Descripcion"].ToString();
-
-                panelDatos.Visible = true;
-            }
         }
 
         private void registrarCategoria_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(denominacion.Text) || string.IsNullOrWhiteSpace(descripcion.Text))
-            {
-                MessageBox.Show("Todos los campos son obligatorios", "Validación",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            bool ok = Conexion.RegistrarCategoria(denominacion.Text.Trim(), descripcion.Text.Trim());
-
-            if (ok)
-            {
-                MessageBox.Show("Registro realizado correctamente", "Éxito",
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
-                CargarCategorias();
-                LimpiarCampos();
-            }
         }
 
         private void limpiar_Click(object sender, EventArgs e)
@@ -94,11 +60,54 @@ namespace Ferreteria.Opciones_Admin
 
         private void LimpiarCampos()
         {
-            denominacion.Clear();
-            descripcion.Clear();
-            articulos.ClearSelection();
+        }
 
-            panelDatos.Visible = false;
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void actualizar_Click(object sender, EventArgs e)
+        {
+
+            // Validar campos
+            if (CampoCategoria.Text.Trim() == "" || CampoDescripcion.Text.Trim() == "")
+            {
+                MessageBox.Show("Todos los campos son obligatorios.", "Aviso",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            try
+            {
+                Conexion.conectar();
+                string sql = "INSERT INTO categorias (categoria, descripcion) " +
+                             "VALUES (@cat, @desc)";
+                MySqlCommand cmd = new MySqlCommand(sql, Conexion.conn);
+                cmd.Parameters.AddWithValue("@cat", CampoCategoria.Text.Trim());
+                cmd.Parameters.AddWithValue("@desc", CampoDescripcion.Text.Trim());
+                cmd.ExecuteNonQuery();
+                Conexion.cerrar();
+
+                MessageBox.Show("Categoría registrada correctamente.", "Éxito",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                // Limpiar campos y recargar tabla
+                CampoCategoria.Text = "";
+                CampoDescripcion.Text = "";
+                CargarCategorias();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al registrar: " + ex.Message);
+            }
+        }
+
+        private void BotonCerrar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+
         }
     }
-}
+    }
+

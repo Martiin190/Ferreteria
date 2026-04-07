@@ -28,139 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.tiendas = new System.Windows.Forms.DataGridView();
-            this.comboTiendas = new System.Windows.Forms.ComboBox();
-            this.panelDatos = new System.Windows.Forms.Panel();
-            this.comboResponsable = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.registrarTienda = new System.Windows.Forms.Button();
-            this.limpiar = new System.Windows.Forms.Button();
-            this.direccion = new System.Windows.Forms.TextBox();
-            this.denominacion = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label12 = new System.Windows.Forms.Label();
-            this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tiendas)).BeginInit();
-            this.panelDatos.SuspendLayout();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.CampoDenominacion = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.BotonCerrar = new System.Windows.Forms.Button();
+            this.actualizar = new System.Windows.Forms.Button();
+            this.CampoDireccion = new System.Windows.Forms.TextBox();
+            this.ComboResponsable = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // panel3
-            // 
-            this.panel3.Controls.Add(this.tiendas);
-            this.panel3.Controls.Add(this.comboTiendas);
-            this.panel3.Location = new System.Drawing.Point(6, 73);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(619, 542);
-            this.panel3.TabIndex = 33;
-            // 
-            // tiendas
-            // 
-            this.tiendas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.tiendas.Location = new System.Drawing.Point(7, 75);
-            this.tiendas.Name = "tiendas";
-            this.tiendas.RowHeadersWidth = 51;
-            this.tiendas.RowTemplate.Height = 24;
-            this.tiendas.Size = new System.Drawing.Size(596, 406);
-            this.tiendas.TabIndex = 21;
-            // 
-            // comboTiendas
-            // 
-            this.comboTiendas.FormattingEnabled = true;
-            this.comboTiendas.Location = new System.Drawing.Point(67, 23);
-            this.comboTiendas.Name = "comboTiendas";
-            this.comboTiendas.Size = new System.Drawing.Size(266, 24);
-            this.comboTiendas.TabIndex = 20;
-            // 
-            // panelDatos
-            // 
-            this.panelDatos.Controls.Add(this.comboResponsable);
-            this.panelDatos.Controls.Add(this.label1);
-            this.panelDatos.Controls.Add(this.label4);
-            this.panelDatos.Controls.Add(this.label3);
-            this.panelDatos.Controls.Add(this.registrarTienda);
-            this.panelDatos.Controls.Add(this.limpiar);
-            this.panelDatos.Controls.Add(this.direccion);
-            this.panelDatos.Controls.Add(this.denominacion);
-            this.panelDatos.Location = new System.Drawing.Point(631, 73);
-            this.panelDatos.Name = "panelDatos";
-            this.panelDatos.Size = new System.Drawing.Size(305, 542);
-            this.panelDatos.TabIndex = 32;
-            // 
-            // comboResponsable
-            // 
-            this.comboResponsable.FormattingEnabled = true;
-            this.comboResponsable.Location = new System.Drawing.Point(31, 358);
-            this.comboResponsable.Name = "comboResponsable";
-            this.comboResponsable.Size = new System.Drawing.Size(242, 24);
-            this.comboResponsable.TabIndex = 18;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(28, 327);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(89, 16);
-            this.label1.TabIndex = 17;
-            this.label1.Text = "Responsable";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Enabled = false;
-            this.label4.Location = new System.Drawing.Point(28, 195);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(79, 16);
-            this.label4.TabIndex = 16;
-            this.label4.Text = "Descripcion";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Enabled = false;
-            this.label3.Location = new System.Drawing.Point(28, 130);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(94, 16);
-            this.label3.TabIndex = 15;
-            this.label3.Text = "Denominacion";
-            // 
-            // registrarTienda
-            // 
-            this.registrarTienda.Location = new System.Drawing.Point(131, 398);
-            this.registrarTienda.Name = "registrarTienda";
-            this.registrarTienda.Size = new System.Drawing.Size(142, 23);
-            this.registrarTienda.TabIndex = 12;
-            this.registrarTienda.Text = "Registrar tienda";
-            this.registrarTienda.UseVisualStyleBackColor = true;
-            // 
-            // limpiar
-            // 
-            this.limpiar.Location = new System.Drawing.Point(50, 398);
-            this.limpiar.Name = "limpiar";
-            this.limpiar.Size = new System.Drawing.Size(75, 23);
-            this.limpiar.TabIndex = 11;
-            this.limpiar.Text = "Limpiar";
-            this.limpiar.UseVisualStyleBackColor = true;
-            // 
-            // direccion
-            // 
-            this.direccion.Enabled = false;
-            this.direccion.Location = new System.Drawing.Point(28, 223);
-            this.direccion.Multiline = true;
-            this.direccion.Name = "direccion";
-            this.direccion.Size = new System.Drawing.Size(245, 84);
-            this.direccion.TabIndex = 3;
-            // 
-            // denominacion
-            // 
-            this.denominacion.Enabled = false;
-            this.denominacion.Location = new System.Drawing.Point(28, 158);
-            this.denominacion.Name = "denominacion";
-            this.denominacion.Size = new System.Drawing.Size(245, 22);
-            this.denominacion.TabIndex = 2;
             // 
             // panel1
             // 
@@ -181,43 +62,127 @@
             this.label12.TabIndex = 0;
             this.label12.Text = "Listado Tiendas";
             // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(120, 118);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowHeadersWidth = 51;
+            this.dataGridView1.RowTemplate.Height = 24;
+            this.dataGridView1.Size = new System.Drawing.Size(695, 186);
+            this.dataGridView1.TabIndex = 46;
+            // 
+            // CampoDenominacion
+            // 
+            this.CampoDenominacion.Location = new System.Drawing.Point(210, 352);
+            this.CampoDenominacion.Name = "CampoDenominacion";
+            this.CampoDenominacion.Size = new System.Drawing.Size(100, 22);
+            this.CampoDenominacion.TabIndex = 40;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Enabled = false;
+            this.label4.Location = new System.Drawing.Point(107, 395);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(64, 16);
+            this.label4.TabIndex = 45;
+            this.label4.Text = "Direccion";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Enabled = false;
+            this.label2.Location = new System.Drawing.Point(107, 355);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(97, 16);
+            this.label2.TabIndex = 44;
+            this.label2.Text = "Denominacion:";
+            // 
+            // BotonCerrar
+            // 
+            this.BotonCerrar.Location = new System.Drawing.Point(385, 471);
+            this.BotonCerrar.Name = "BotonCerrar";
+            this.BotonCerrar.Size = new System.Drawing.Size(126, 23);
+            this.BotonCerrar.TabIndex = 42;
+            this.BotonCerrar.Text = "Cerrar";
+            this.BotonCerrar.UseVisualStyleBackColor = true;
+            this.BotonCerrar.Click += new System.EventHandler(this.BotonCerrar_Click);
+            // 
+            // actualizar
+            // 
+            this.actualizar.Location = new System.Drawing.Point(174, 471);
+            this.actualizar.Name = "actualizar";
+            this.actualizar.Size = new System.Drawing.Size(179, 23);
+            this.actualizar.TabIndex = 43;
+            this.actualizar.Text = "Actualizar";
+            this.actualizar.UseVisualStyleBackColor = true;
+            this.actualizar.Click += new System.EventHandler(this.actualizar_Click);
+            // 
+            // CampoDireccion
+            // 
+            this.CampoDireccion.Location = new System.Drawing.Point(210, 388);
+            this.CampoDireccion.Multiline = true;
+            this.CampoDireccion.Name = "CampoDireccion";
+            this.CampoDireccion.Size = new System.Drawing.Size(204, 23);
+            this.CampoDireccion.TabIndex = 41;
+            // 
+            // ComboResponsable
+            // 
+            this.ComboResponsable.FormattingEnabled = true;
+            this.ComboResponsable.Location = new System.Drawing.Point(210, 427);
+            this.ComboResponsable.Name = "ComboResponsable";
+            this.ComboResponsable.Size = new System.Drawing.Size(204, 24);
+            this.ComboResponsable.TabIndex = 47;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Enabled = false;
+            this.label1.Location = new System.Drawing.Point(107, 435);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(89, 16);
+            this.label1.TabIndex = 48;
+            this.label1.Text = "Responsable";
+            // 
             // VentanaVerListadoTiendas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(948, 626);
-            this.Controls.Add(this.panel3);
-            this.Controls.Add(this.panelDatos);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.ComboResponsable);
+            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.CampoDenominacion);
             this.Controls.Add(this.panel1);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.CampoDireccion);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.actualizar);
+            this.Controls.Add(this.BotonCerrar);
             this.Name = "VentanaVerListadoTiendas";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "VentanaVerListadoTiendas";
-            this.panel3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.tiendas)).EndInit();
-            this.panelDatos.ResumeLayout(false);
-            this.panelDatos.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.DataGridView tiendas;
-        private System.Windows.Forms.ComboBox comboTiendas;
-        private System.Windows.Forms.Panel panelDatos;
-        private System.Windows.Forms.ComboBox comboResponsable;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button registrarTienda;
-        private System.Windows.Forms.Button limpiar;
-        private System.Windows.Forms.TextBox direccion;
-        private System.Windows.Forms.TextBox denominacion;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.TextBox CampoDenominacion;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button BotonCerrar;
+        private System.Windows.Forms.Button actualizar;
+        private System.Windows.Forms.TextBox CampoDireccion;
+        private System.Windows.Forms.ComboBox ComboResponsable;
+        private System.Windows.Forms.Label label1;
     }
 }

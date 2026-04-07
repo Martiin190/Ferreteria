@@ -14,99 +14,169 @@ namespace Ferreteria.Opciones_Admin
 {
     public partial class VentanaVerListadoArticulosDestacados : Form
     {
-        private string _codigoSeleccionado = string.Empty;
 
         public VentanaVerListadoArticulosDestacados()
         {
             InitializeComponent();
-            // Vinculamos eventos manualmente por seguridad
-            this.articulos.SelectionChanged += articulos_SelectionChanged;
-            this.comboSeleccione.SelectedIndexChanged += comboSeleccione_SelectedIndexChanged;
-            this.Load += VentanaVerListadoArticulosDestacados_Load;
+            CargarDatos();
+
         }
-
-        private void VentanaVerListadoArticulosDestacados_Load(object sender, EventArgs e)
+        private void CargarDatos()
         {
-            ConfigurarDataGridView();
-            CargarArticulos();
-            panelDatos.Visible = false;
-        }
+            string sql = "SELECT codProducto, nombre, categoria, precio_venta, destacado " +
+                 "FROM producto WHERE destacado = 'SI'";
 
-        private void ConfigurarDataGridView()
-        {
-            articulos.ReadOnly = true;
-            articulos.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            articulos.MultiSelect = false;
-            articulos.AllowUserToAddRows = false;
-            articulos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-        }
+            dataGridView1.DataSource = Conexion.GetTabla(sql);
 
-        private void CargarArticulos()
-        {
-            DataTable dt = Conexion.VerListadoArticulosDestacados();
+            dataGridView1.ReadOnly = true;
+            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridView1.MultiSelect = false;
+            dataGridView1.AllowUserToAddRows = false;
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
-            if (dt != null)
-            {
-                articulos.DataSource = dt;
+            dataGridView1.Columns["codProducto"].HeaderText = "Código";
+            dataGridView1.Columns["nombre"].HeaderText = "Nombre";
+            dataGridView1.Columns["categoria"].HeaderText = "Categoría";
+            dataGridView1.Columns["precio_venta"].HeaderText = "Precio Venta";
+            dataGridView1.Columns["destacado"].HeaderText = "Destacado";
 
-                comboSeleccione.DataSource = dt;
-                comboSeleccione.DisplayMember = "nombre";
-                comboSeleccione.ValueMember = "codProducto";
-                comboSeleccione.SelectedIndex = -1;
-            }
-        }
-
-        private void CargarDetalle(DataRow fila)
-        {
-            campoCodigo.Text = fila["codProducto"].ToString();
-            nombre.Text = fila["nombre"].ToString();
-            categoria.Text = fila["categoria"].ToString();
-            descripcion.Text = fila["descripcion"].ToString();
-            precioCompra.Text = fila["precio_compra"].ToString();
-            precioVenta.Text = fila["precio_venta"].ToString();
-            stock.Text = fila["stock"].ToString();
-            origen.Text = fila["origen"].ToString();
-            oferta.Text = fila["oferta"].ToString();
-
-            if (fila["fecha_alta"] != DBNull.Value)
-                fechaAlta.Text = Convert.ToDateTime(fila["fecha_alta"]).ToShortDateString();
-
-            panelDatos.Visible = true;
-        }
-
-        private void articulos_SelectionChanged(object sender, EventArgs e)
-        {
-            if (articulos.SelectedRows.Count > 0)
-            {
-                DataRowView fila = (DataRowView)articulos.SelectedRows[0].DataBoundItem;
-                CargarDetalle(fila.Row);
-            }
-        }
-
-        private void comboSeleccione_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (comboSeleccione.SelectedValue != null && comboSeleccione.Focused)
-            {
-                DataRowView fila = (DataRowView)comboSeleccione.SelectedItem;
-                CargarDetalle(fila.Row);
-            }
+            // Cargar opciones del ComboBox
+            ComboDestacado.Items.Clear();
+            ComboDestacado.Items.Add("SI");
+            ComboDestacado.Items.Add("NO");
         }
 
         private void LimpiarDetalle()
         {
-            _codigoSeleccionado = string.Empty;
-            campoCodigo.Clear();
-            nombre.Clear();
-            categoria.Clear();
-            descripcion.Clear();
-            precioCompra.Clear();
-            precioVenta.Clear();
-            stock.Clear();
-            origen.Clear();
-            oferta.Clear();
-            fechaAlta.Clear();
-            panelDatos.Visible = false;
+            CampoCodigo.Text = "";
+            CampoNombre.Text = "";
+            CampoCategoria.Text = "";
+            CampoDescripcion.Text = "";
+            CampoPrecioCompra.Text = "";
+            CampoPrecioVenta.Text = "";
+            CampoStock.Text = "";
+            CampoOrigen.Text = "";
+            CampoOferta.Text = "";
+            CampoFecha.Text = "";
+            ComboDestacado.SelectedIndex = -1;
+        }
+        private void VentanaVerListadoArticulosDestacados_Load(object sender, EventArgs e)
+        {
+            
+        }
+
+        
+
+      
+
+        private void articulos_SelectionChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void comboSeleccione_SelectedIndexChanged(object sender, EventArgs e)
+        {
+           
+        }
+
+      
+        private void articulos_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0) return;
+
+            LimpiarDetalle();
+
+            string codigo = dataGridView1.Rows[e.RowIndex]
+                            .Cells["codProducto"].Value.ToString();
+
+            string sql = "SELECT * FROM producto WHERE codProducto = '" + codigo + "'";
+            DataTable dt = Conexion.GetTabla(sql);
+
+            if (dt.Rows.Count > 0)
+            {
+                DataRow fila = dt.Rows[0];
+                CampoCodigo.Text = fila["codProducto"].ToString();
+                CampoNombre.Text = fila["nombre"].ToString();
+                CampoCategoria.Text = fila["categoria"].ToString();
+                CampoDescripcion.Text = fila["descripcion"].ToString();
+                CampoPrecioCompra.Text = fila["precio_compra"].ToString();
+                CampoPrecioVenta.Text = fila["precio_venta"].ToString();
+                CampoStock.Text = fila["stock"].ToString();
+                CampoOrigen.Text = fila["origen"].ToString();
+                CampoOferta.Text = fila["oferta"].ToString();
+                CampoFecha.Text = fila["fecha_alta"].ToString();
+
+                // Seleccionar valor actual en el ComboBox
+                ComboDestacado.SelectedItem = fila["destacado"].ToString();
+            }
+        }
+
+        private void VentanaVerListadoArticulosDestacados_Load_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+            // Validar que hay artículo seleccionado
+            if (CampoCodigo.Text == "")
+            {
+                MessageBox.Show("Selecciona un artículo primero.");
+                return;
+            }
+
+            // Validar que hay valor en el combo
+            if (ComboDestacado.SelectedItem == null)
+            {
+                MessageBox.Show("Selecciona un valor para destacado.");
+                return;
+            }
+
+            string codigo = CampoCodigo.Text;
+            string nuevoValor = ComboDestacado.SelectedItem.ToString();
+
+            // Confirmar acción
+            DialogResult confirm = MessageBox.Show(
+                "¿Cambiar destacado a " + nuevoValor + "?",
+                "Confirmar",
+                MessageBoxButtons.YesNo
+            );
+
+            if (confirm == DialogResult.Yes)
+            {
+                Conexion.CambiarDestacado(codigo, nuevoValor);
+                MessageBox.Show("✅ Destacado actualizado correctamente.");
+                CargarDatos();   // Refresca el DataGridView
+                LimpiarDetalle(); // Limpia el detalle
+            }
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void panelDatos_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void ComboDestacado_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void a_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
+
 

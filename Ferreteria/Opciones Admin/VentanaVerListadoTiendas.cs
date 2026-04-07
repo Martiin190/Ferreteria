@@ -17,106 +17,109 @@ namespace Ferreteria.Opciones_Admin
         public VentanaVerListadoTiendas()
         {
             InitializeComponent();
-            this.Load += VentanaVerListadoTiendas_Load;
-            this.tiendas.SelectionChanged += tiendas_SelectionChanged;
-            ConfiguracionInterfaz();
+            CargarTiendas();
+            CargarResponsables();
+        }
+        private void CargarTiendas()
+        {
+            string sql = "SELECT denominacion, direccion, responsable FROM tiendas";
+            dataGridView1.DataSource = Conexion.GetTabla(sql);
+
+            dataGridView1.ReadOnly = true;
+            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridView1.MultiSelect = false;
+            dataGridView1.AllowUserToAddRows = false;
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+            dataGridView1.Columns["denominacion"].HeaderText = "Denominación";
+            dataGridView1.Columns["direccion"].HeaderText = "Dirección";
+            dataGridView1.Columns["responsable"].HeaderText = "Responsable";
+        }
+        private void CargarResponsables()
+        {
+            string sql = "SELECT nombre_apellidos FROM responsables_tienda";
+            DataTable dt = Conexion.GetTabla(sql);
+
+            ComboResponsable.DataSource = dt;
+            ComboResponsable.DisplayMember = "nombre_apellidos";
+            ComboResponsable.ValueMember = "nombre_apellidos";
+            ComboResponsable.SelectedIndex = -1;
         }
 
         private void VentanaVerListadoTiendas_Load(object sender, EventArgs e)
         {
-            CargarListadoTiendas();
-            CargarResponsablesEnCombo();
+            
         }
 
         private void ConfiguracionInterfaz()
         {
-            panelDatos.Visible = false;
-            tiendas.ReadOnly = true;
-            tiendas.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            tiendas.MultiSelect = false;
-            tiendas.AllowUserToAddRows = false;
-            tiendas.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            
         }
 
         private void CargarListadoTiendas()
         {
-            DataTable dt = Conexion.VerListadoTiendas();
-
-            if (dt != null)
-                tiendas.DataSource = dt;
-
-            comboTiendas.DataSource = new DataTable();
-            comboTiendas.DataSource = dt;
-            comboTiendas.DisplayMember = "Denominacion";
-            comboTiendas.ValueMember = "Denominacion";
-            comboTiendas.SelectedIndex = -1;
         }
 
         private void CargarResponsablesEnCombo()
         {
-            DataTable dt = Conexion.GetResponsables();
-
-            if (dt != null)
-            {
-                comboResponsable.DataSource = dt;
-                comboResponsable.DisplayMember = "nombre_apellidos";
-                comboResponsable.ValueMember = "nombre_apellidos";
-                comboResponsable.SelectedIndex = -1;
-            }
+           
         }
 
         private void tiendas_SelectionChanged(object sender, EventArgs e)
         {
-            if (tiendas.SelectedRows.Count > 0)
-            {
-                DataRow fila = ((DataRowView)tiendas.SelectedRows[0].DataBoundItem).Row;
-
-                denominacion.Text = fila["denominacion"].ToString();
-                direccion.Text = fila["direccion"].ToString();
-                comboResponsable.Text = fila["responsable"].ToString();
-
-                panelDatos.Visible = true;
-            }
         }
 
         private void registrarTienda_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(denominacion.Text) ||
-                string.IsNullOrWhiteSpace(direccion.Text) ||
-                comboResponsable.SelectedIndex == -1)
-            {
-                MessageBox.Show("Todos los campos de registro son obligatorios", "Validación",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            bool ok = Conexion.RegistrarTienda(
-                denominacion.Text.Trim(),
-                direccion.Text.Trim(),
-                comboResponsable.SelectedValue.ToString()
-            );
-
-            if (ok)
-            {
-                MessageBox.Show("Registro realizado correctamente", "Éxito",
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
-                CargarListadoTiendas();
-                LimpiarFormulario();
-            }
         }
 
         private void limpiar_Click(object sender, EventArgs e)
         {
-            LimpiarFormulario();
         }
 
-        private void LimpiarFormulario()
+       
+
+        private void actualizar_Click(object sender, EventArgs e)
+        { if (CampoDenominacion.Text.Trim() == "" ||
+                CampoDireccion.Text.Trim() == "" ||
+                ComboResponsable.SelectedIndex == -1)
+            {
+                MessageBox.Show("Todos los campos son obligatorios.", "Aviso",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            try
+            {
+                Conexion.conectar();
+                string sql = "INSERT INTO tiendas (denominacion, direccion, responsable) " +
+                             "VALUES (@den, @dir, @res)";
+    MySqlCommand cmd = new MySqlCommand(sql, Conexion.conn);
+    cmd.Parameters.AddWithValue("@den", CampoDenominacion.Text.Trim());
+                cmd.Parameters.AddWithValue("@dir", CampoDireccion.Text.Trim());
+                cmd.Parameters.AddWithValue("@res", ComboResponsable.SelectedValue.ToString());
+                cmd.ExecuteNonQuery();
+                Conexion.cerrar();
+
+                MessageBox.Show("Tienda registrada correctamente.", "Éxito",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                CampoDenominacion.Text = "";
+                CampoDireccion.Text = "";
+                ComboResponsable.SelectedIndex = -1;
+                CargarTiendas();
+}
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al registrar: " + ex.Message);
+            }
+        }
+
+        private void BotonCerrar_Click(object sender, EventArgs e)
         {
-            denominacion.Clear();
-            direccion.Clear();
-            comboResponsable.SelectedIndex = -1;
-            tiendas.ClearSelection();
-            panelDatos.Visible = false;
+            this.Close();
+
         }
     }
-}
+    }
+

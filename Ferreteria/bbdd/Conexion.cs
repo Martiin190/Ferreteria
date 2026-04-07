@@ -706,6 +706,62 @@ namespace Ferreteria.bbdd
             }
             finally { cerrar(); }
         }
+
+
+        //===========================================================================================//
+                  //METODOS PARA QUE FUNCIONEN LOS CAMBIOS EN LOS COMBOBOXES DE LOS LISTADOS
+
+        public static void CambiarDestacado(string codigo, string valor)
+        {
+            conectar();
+            try
+            {
+                string sql = "UPDATE producto SET destacado = @v WHERE codProducto = @c";
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("@v", valor);
+                cmd.Parameters.AddWithValue("@c", codigo);
+                cmd.ExecuteNonQuery();
+            }
+            catch (MySqlException e)
+            {
+                MessageBox.Show("Error al actualizar destacado.\n" + e.Message);
+            }
+            finally
+            {
+                cerrar();
+            }
+        }
+
+
+
+        public static void CambiarOferta(string codigo, string valor)
+        {
+            conectar();
+            try
+            {
+                string sql = "UPDATE producto SET oferta = @v WHERE codProducto = @c";
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("@v", valor);
+                cmd.Parameters.AddWithValue("@c", codigo);
+                cmd.ExecuteNonQuery();
+            }
+            catch (MySqlException e)
+            {
+                MessageBox.Show("Error al actualizar oferta.\n" + e.Message);
+            }
+            finally
+            {
+                cerrar();
+            }
+        }
+
+
+
+
+
+
     }
+
+
 }
 
