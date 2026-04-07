@@ -19,7 +19,6 @@ namespace Ferreteria.Opciones_User
     {
         private void CargarDatosCuenta()
         {
-            MessageBox.Show("Usuario logado: " + Usuario.UsuarioLogado);
 
             try
             {

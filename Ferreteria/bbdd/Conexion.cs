@@ -680,5 +680,5 @@ namespace Ferreteria.bbdd
             finally { cerrar(); }
         }
     }
- }
+}
 

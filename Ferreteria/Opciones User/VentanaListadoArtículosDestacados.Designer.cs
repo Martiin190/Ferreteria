@@ -28,11 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.CampoFecha = new System.Windows.Forms.TextBox();
             this.CampoOferta = new System.Windows.Forms.TextBox();
@@ -54,41 +51,13 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            this.panel1.SuspendLayout();
+            this.label3 = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.groupBox1.SuspendLayout();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(58, 140);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(674, 181);
-            this.dataGridView1.TabIndex = 0;
-            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Location = new System.Drawing.Point(-6, -9);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(810, 109);
-            this.panel1.TabIndex = 2;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 25.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(34, 47);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(429, 51);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Articulos Destacados";
             // 
             // label2
             // 
@@ -100,15 +69,15 @@
             this.label2.TabIndex = 3;
             this.label2.Text = "LISTADO";
             // 
-            // label3
+            // label1
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(54, 343);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(268, 22);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "Detalle del artículo seleccionado";
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 25.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(34, 47);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(429, 51);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Articulos Destacados";
             // 
             // groupBox1
             // 
@@ -133,10 +102,10 @@
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Location = new System.Drawing.Point(58, 384);
+            this.groupBox1.Location = new System.Drawing.Point(59, 395);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(512, 394);
-            this.groupBox1.TabIndex = 5;
+            this.groupBox1.TabIndex = 9;
             this.groupBox1.TabStop = false;
             // 
             // CampoFecha
@@ -308,7 +277,36 @@
             this.label4.Size = new System.Drawing.Size(54, 16);
             this.label4.TabIndex = 0;
             this.label4.Text = "Codigo:";
-            this.label4.Click += new System.EventHandler(this.label4_Click);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(55, 354);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(268, 22);
+            this.label3.TabIndex = 8;
+            this.label3.Text = "Detalle del artículo seleccionado";
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Location = new System.Drawing.Point(-5, 2);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(810, 109);
+            this.panel1.TabIndex = 7;
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(59, 151);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowHeadersWidth = 51;
+            this.dataGridView1.RowTemplate.Height = 24;
+            this.dataGridView1.Size = new System.Drawing.Size(674, 181);
+            this.dataGridView1.TabIndex = 6;
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // VentanaListadoArtículosDestacados
             // 
@@ -318,29 +316,34 @@
             this.ClientSize = new System.Drawing.Size(800, 790);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.label2);
             this.Name = "VentanaListadoArtículosDestacados";
             this.Text = "VentanaListadoArtículosDestacados";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.TextBox CampoFecha;
+        private System.Windows.Forms.TextBox CampoOferta;
+        private System.Windows.Forms.TextBox CampoOrigen;
+        private System.Windows.Forms.TextBox CampoStock;
+        private System.Windows.Forms.TextBox CampoPrecioVenta;
+        private System.Windows.Forms.TextBox CampoPrecioCompra;
+        private System.Windows.Forms.TextBox CampoDescripcion;
+        private System.Windows.Forms.TextBox CampoCategoria;
+        private System.Windows.Forms.TextBox CampoNombre;
         private System.Windows.Forms.TextBox CampoCodigo;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label12;
@@ -352,14 +355,8 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox CampoFecha;
-        private System.Windows.Forms.TextBox CampoOferta;
-        private System.Windows.Forms.TextBox CampoOrigen;
-        private System.Windows.Forms.TextBox CampoStock;
-        private System.Windows.Forms.TextBox CampoPrecioVenta;
-        private System.Windows.Forms.TextBox CampoPrecioCompra;
-        private System.Windows.Forms.TextBox CampoDescripcion;
-        private System.Windows.Forms.TextBox CampoCategoria;
-        private System.Windows.Forms.TextBox CampoNombre;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.DataGridView dataGridView1;
     }
 }

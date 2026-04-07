@@ -103,6 +103,16 @@ namespace Ferreteria.Opciones_Admin
         {
             // Aquí irá la lógica de actualizar cuando la tengas
         }
+
+        private void usuario_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void usuarios_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
 

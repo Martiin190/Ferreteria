@@ -72,6 +72,7 @@
             this.usuarios.RowTemplate.Height = 24;
             this.usuarios.Size = new System.Drawing.Size(623, 390);
             this.usuarios.TabIndex = 21;
+            this.usuarios.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.usuarios_CellContentClick);
             // 
             // comboUsuarios
             // 
@@ -217,6 +218,7 @@
             this.usuario.Name = "usuario";
             this.usuario.Size = new System.Drawing.Size(245, 84);
             this.usuario.TabIndex = 3;
+            this.usuario.TextChanged += new System.EventHandler(this.usuario_TextChanged);
             // 
             // nombreYApellidos
             // 
