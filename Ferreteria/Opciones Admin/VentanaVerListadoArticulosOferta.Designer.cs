@@ -361,6 +361,7 @@
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.panelDatos);
             this.Controls.Add(this.panel1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "VentanaVerListadoArticulosOferta";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "VentanaVerListadoArticulosOferta";

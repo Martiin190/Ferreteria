@@ -570,42 +570,33 @@ namespace Ferreteria.bbdd
             finally { cerrar(); }
         }
 
-        public static bool RegistrarArticulo(string cod, string nom, string cat, string desc,
-        double pComp, double pVenta, int stock, string orig, string dest, string ofer, DateTime fecha)
+        public static bool RegistrarArticulo(string cod, string nom, string cat, string desc, double pc, double pv, int st, string ori, string dest, string ofer, DateTime fecha)
         {
             conectar();
             try
             {
-                string sql = @"INSERT INTO producto 
-            (codProducto, nombre, categoria, descripcion, precio_compra, precio_venta, stock, 
-            origen, destacado, oferta, fecha_alta) 
-            VALUES (@cod, @nom, @cat, @desc, @pComp, @pVenta, @stock, @orig, @dest, @ofer, @fecha)";
-
+                string sql = "INSERT INTO producto VALUES (@cod, @nom, @cat, @desc, @pc, @pv, @st, @ori, @dest, @ofer, @fecha)";
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
                 cmd.Parameters.AddWithValue("@cod", cod);
                 cmd.Parameters.AddWithValue("@nom", nom);
                 cmd.Parameters.AddWithValue("@cat", cat);
                 cmd.Parameters.AddWithValue("@desc", desc);
-                cmd.Parameters.AddWithValue("@pComp", pComp);
-                cmd.Parameters.AddWithValue("@pVenta", pVenta);
-                cmd.Parameters.AddWithValue("@stock", stock);
-                cmd.Parameters.AddWithValue("@orig", orig);
+                cmd.Parameters.AddWithValue("@pc", pc);
+                cmd.Parameters.AddWithValue("@pv", pv);
+                cmd.Parameters.AddWithValue("@st", st);
+                cmd.Parameters.AddWithValue("@ori", ori);
                 cmd.Parameters.AddWithValue("@dest", dest);
                 cmd.Parameters.AddWithValue("@ofer", ofer);
                 cmd.Parameters.AddWithValue("@fecha", fecha);
 
-                int filas = cmd.ExecuteNonQuery();
-                return filas > 0;
+                return cmd.ExecuteNonQuery() > 0;
             }
-            catch (MySqlException e)
+            catch (Exception ex)
             {
-                MessageBox.Show("Error al registrar el artículo.\n" + e.Message);
+                MessageBox.Show("Error de DB: " + ex.Message);
                 return false;
             }
-            finally
-            {
-                cerrar();
-            }
+            finally { cerrar(); }
         }
 
         public static bool ExisteUsuario(string usuario)

@@ -345,7 +345,9 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.label2);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "VentanaListadoArtículosDestacados";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "VentanaListadoArtículosDestacados";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

@@ -362,6 +362,7 @@
             this.Controls.Add(this.panelDatos);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.a);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "VentanaVerListadoArticulosDestacados";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "VentanaVerListadoArticulosDestacados";

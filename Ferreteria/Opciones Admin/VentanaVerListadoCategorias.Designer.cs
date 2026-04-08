@@ -140,6 +140,7 @@
             this.Controls.Add(this.BotonCerrar);
             this.Controls.Add(this.actualizar);
             this.Controls.Add(this.CampoDescripcion);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "VentanaVerListadoCategorias";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "VentanaVerListadoCategorias";

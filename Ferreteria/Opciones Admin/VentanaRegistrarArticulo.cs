@@ -43,15 +43,52 @@ namespace Ferreteria.Opciones_Admin
 
         private void botonRegistrar_Click(object sender, EventArgs e)
         {
-
+            // 1. VALIDACIÓN (Lo que ya tenías, pero ampliado a todos los campos obligatorios RI2)
             if (string.IsNullOrWhiteSpace(campoCodigo.Text) ||
                 string.IsNullOrWhiteSpace(campoNombre.Text) ||
-                comboCategoria.SelectedIndex == -1 ||
+                string.IsNullOrWhiteSpace(campoDescripcion.Text) ||
                 string.IsNullOrWhiteSpace(campoPrecioCompra.Text) ||
+                string.IsNullOrWhiteSpace(campoStock.Text) ||
+                comboCategoria.SelectedIndex == -1 ||
                 comboOrigen.SelectedIndex == -1)
             {
-                MessageBox.Show("Todos los campos de registro son obligatorios.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Todos los campos son obligatorios.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
+            }
+
+            // 2. RECOGIDA DE VALORES (Especialmente los RadioButtons)
+            string destacado = radioDestacadoSi.Checked ? "SI" : "NO";
+            string oferta = radioOfertaSi.Checked ? "SI" : "NO";
+
+            // Convertimos precios y stock (usamos TryParse para evitar bloqueos si ponen letras)
+            double pCompra = double.Parse(campoPrecioCompra.Text);
+            double pVenta = double.Parse(campoPrecioVenta.Text);
+            int stock = int.Parse(campoStock.Text);
+
+            // 3. LLAMADA A LA BASE DE DATOS
+            bool exito = Conexion.RegistrarArticulo(
+                campoCodigo.Text.Trim(),
+                campoNombre.Text.Trim(),
+                comboCategoria.Text,
+                campoDescripcion.Text.Trim(),
+                pCompra,
+                pVenta,
+                stock,
+                comboOrigen.Text,
+                destacado,
+                oferta,
+                fechaAlta.Value.Date
+            );
+
+            // 4. RESPUESTA AL USUARIO (RI2)
+            if (exito)
+            {
+                MessageBox.Show("Artículo registrado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                LimpiarCampos(); // Limpiamos para el siguiente registro
+            }
+            else
+            {
+                MessageBox.Show("No se pudo registrar. Revisa si el código de producto ya existe.", "Error");
             }
         }
 
@@ -104,6 +141,11 @@ namespace Ferreteria.Opciones_Admin
         private void botonLimpiar_Click(object sender, EventArgs e)
         {
             LimpiarCampos();
+        }
+
+        private void campoDescripcion_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

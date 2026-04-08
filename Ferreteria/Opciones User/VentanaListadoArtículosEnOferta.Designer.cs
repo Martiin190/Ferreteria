@@ -331,7 +331,9 @@
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label3);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "VentanaListadoArtículosEnOferta";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "VentanaListadoArtículosEnOferta";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

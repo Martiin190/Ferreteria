@@ -143,6 +143,7 @@ namespace Ferreteria.Opciones_Admin
             this.campoDescripcion.Name = "campoDescripcion";
             this.campoDescripcion.Size = new System.Drawing.Size(536, 107);
             this.campoDescripcion.TabIndex = 2;
+            this.campoDescripcion.TextChanged += new System.EventHandler(this.campoDescripcion_TextChanged);
             // 
             // campoNombre
             // 
