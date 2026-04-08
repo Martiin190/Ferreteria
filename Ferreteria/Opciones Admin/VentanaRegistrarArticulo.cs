@@ -55,7 +55,7 @@ namespace Ferreteria.Opciones_Admin
                 MessageBox.Show("Todos los campos son obligatorios.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            //a
+            //aaa
             // 2. RECOGIDA DE VALORES (Especialmente los RadioButtons)
             string destacado = radioDestacadoSi.Checked ? "SI" : "NO";
             string oferta = radioOfertaSi.Checked ? "SI" : "NO";
